@@ -12,6 +12,13 @@ namespace Teamerino_Memerino
 {
     public partial class FormAddEditInv : Form
     {
+
+        public struct Inventory
+        {
+            int Barcode
+                
+        }
+
         public FormAddEditInv()
         {
             InitializeComponent();
