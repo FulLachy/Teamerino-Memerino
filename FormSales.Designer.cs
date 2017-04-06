@@ -129,6 +129,7 @@
             this.Text = "Sales";
             this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormSales_FormClosing);
+            this.Load += new System.EventHandler(this.FormSales_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 

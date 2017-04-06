@@ -25,5 +25,15 @@ namespace Teamerino_Memerino
                 Hide();
             }
         }
+
+        private void FormInventory_Load(object sender, EventArgs e)
+        {
+            //load in information
+        }
+
+        private void bt_Remove_Inv_Click(object sender, EventArgs e)
+        {
+            //remove selected row
+        }
     }
 }
