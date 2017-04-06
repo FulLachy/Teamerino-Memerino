@@ -33,6 +33,9 @@ namespace Teamerino_Memerino
             bool saveflag = true;
             bool lastrowemptyflag = false;
 
+            int r = 0;
+            int c = 0;
+
             int intparse;
             double doubleparse;
 
@@ -63,9 +66,9 @@ namespace Teamerino_Memerino
             //Checks for the right data type
             else
             {
-                for (int r = 0; r < RowCount; r++)
+                for (r = 0; r < RowCount; r++)
                 {
-                    for (int c = 0; c < ColumnCount; c++)
+                    for (c = 0; c < ColumnCount; c++)
                     {
                    
 

@@ -12,8 +12,8 @@ namespace Teamerino_Memerino
 {
     public partial class FormSales : Form
     {
-        FormEditRecord form_add_record = new FormEditRecord();
-        FormEdit
+        FormAddSalesRecord form_add_edit_record = new FormAddSalesRecord();
+        
 
         public FormSales()
         {
@@ -31,12 +31,12 @@ namespace Teamerino_Memerino
 
         private void button_new_sales_record_Click(object sender, EventArgs e)
         {
-            FormEditRecord.Show();
+            form_add_edit_record.Show();
         }
 
         private void button_edit_record_Click(object sender, EventArgs e)
         {
-            
+            form_add_edit_record.Show();
         }
 
         private void FormSales_Load(object sender, EventArgs e)

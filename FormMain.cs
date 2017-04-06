@@ -33,5 +33,10 @@ namespace Teamerino_Memerino
         {
 
         }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -54,7 +54,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(12, 41);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(547, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(547, 246);
             this.dataGridView1.TabIndex = 0;
             // 
             // RecordNumber
@@ -120,7 +120,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(570, 341);
+            this.ClientSize = new System.Drawing.Size(570, 310);
             this.Controls.Add(this.button_delete);
             this.Controls.Add(this.button_edit_record);
             this.Controls.Add(this.button_new_sales_record);

@@ -35,12 +35,13 @@
             this.clm_ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bt_Remove = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_AddEditSales)).BeginInit();
             this.SuspendLayout();
             // 
             // button_save
             // 
-            this.button_save.Location = new System.Drawing.Point(463, 11);
+            this.button_save.Location = new System.Drawing.Point(463, 57);
             this.button_save.Name = "button_save";
             this.button_save.Size = new System.Drawing.Size(93, 25);
             this.button_save.TabIndex = 0;
@@ -50,7 +51,7 @@
             // 
             // button_cancel
             // 
-            this.button_cancel.Location = new System.Drawing.Point(463, 40);
+            this.button_cancel.Location = new System.Drawing.Point(463, 86);
             this.button_cancel.Name = "button_cancel";
             this.button_cancel.Size = new System.Drawing.Size(93, 25);
             this.button_cancel.TabIndex = 1;
@@ -92,12 +93,22 @@
             this.clm_Price.HeaderText = "Price";
             this.clm_Price.Name = "clm_Price";
             // 
+            // bt_Remove
+            // 
+            this.bt_Remove.Location = new System.Drawing.Point(463, 12);
+            this.bt_Remove.Name = "bt_Remove";
+            this.bt_Remove.Size = new System.Drawing.Size(93, 25);
+            this.bt_Remove.TabIndex = 3;
+            this.bt_Remove.Text = "Remove Row";
+            this.bt_Remove.UseVisualStyleBackColor = true;
+            // 
             // FormAddSalesRecord
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(563, 257);
             this.ControlBox = false;
+            this.Controls.Add(this.bt_Remove);
             this.Controls.Add(this.DGV_AddEditSales);
             this.Controls.Add(this.button_cancel);
             this.Controls.Add(this.button_save);
@@ -105,7 +116,7 @@
             this.MinimizeBox = false;
             this.Name = "FormAddSalesRecord";
             this.ShowIcon = false;
-            this.Text = "Add Sales Record";
+            this.Text = "Add or Edit Sales Record";
             this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormAddEditRecord_FormClosing);
             this.Load += new System.EventHandler(this.FormEditRecord_Load);
@@ -123,5 +134,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_ItemName;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_Amount;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_Price;
+        private System.Windows.Forms.Button bt_Remove;
     }
 }

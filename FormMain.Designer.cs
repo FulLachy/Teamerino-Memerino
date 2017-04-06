@@ -74,6 +74,7 @@
             this.Controls.Add(this.button_sales_records);
             this.Name = "FormMain";
             this.Text = "Main";
+            this.Load += new System.EventHandler(this.FormMain_Load);
             this.ResumeLayout(false);
 
         }
