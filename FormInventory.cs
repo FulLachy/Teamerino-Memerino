@@ -40,17 +40,22 @@ namespace Teamerino_Memerino
 
         private void bt_Add_Inv_Click(object sender, EventArgs e)
         {
-            add_edit_inv.Show();
+            
         }
 
         private void bt_Edit_Inv_Click(object sender, EventArgs e)
         {
-            add_edit_inv.Show();
+            
         }
 
         private void bt_exit_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
