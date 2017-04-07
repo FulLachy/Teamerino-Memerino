@@ -130,5 +130,14 @@ namespace Teamerino_Memerino
             
         }
 
+        private void button_move_item_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox_item_list_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
