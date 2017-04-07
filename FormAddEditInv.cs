@@ -15,7 +15,7 @@ namespace Teamerino_Memerino
 
         public struct Inventory
         {
-            int Barcode
+            int Barcode;
                 
         }
 
