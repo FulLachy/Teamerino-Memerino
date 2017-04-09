@@ -40,10 +40,9 @@ namespace Teamerino_Memerino
             // 
             // button_edit_record
             // 
-            this.button_edit_record.Location = new System.Drawing.Point(723, 72);
-            this.button_edit_record.Margin = new System.Windows.Forms.Padding(4);
+            this.button_edit_record.Location = new System.Drawing.Point(542, 58);
             this.button_edit_record.Name = "button_edit_record";
-            this.button_edit_record.Size = new System.Drawing.Size(124, 28);
+            this.button_edit_record.Size = new System.Drawing.Size(93, 23);
             this.button_edit_record.TabIndex = 0;
             this.button_edit_record.Text = "Edit";
             this.button_edit_record.UseVisualStyleBackColor = true;
@@ -51,10 +50,9 @@ namespace Teamerino_Memerino
             // 
             // button_inventory
             // 
-            this.button_inventory.Location = new System.Drawing.Point(724, 130);
-            this.button_inventory.Margin = new System.Windows.Forms.Padding(4);
+            this.button_inventory.Location = new System.Drawing.Point(543, 106);
             this.button_inventory.Name = "button_inventory";
-            this.button_inventory.Size = new System.Drawing.Size(124, 28);
+            this.button_inventory.Size = new System.Drawing.Size(93, 23);
             this.button_inventory.TabIndex = 1;
             this.button_inventory.Text = "Inventory";
             this.button_inventory.UseVisualStyleBackColor = true;
@@ -62,10 +60,9 @@ namespace Teamerino_Memerino
             // 
             // button_reports
             // 
-            this.button_reports.Location = new System.Drawing.Point(724, 183);
-            this.button_reports.Margin = new System.Windows.Forms.Padding(4);
+            this.button_reports.Location = new System.Drawing.Point(543, 149);
             this.button_reports.Name = "button_reports";
-            this.button_reports.Size = new System.Drawing.Size(124, 28);
+            this.button_reports.Size = new System.Drawing.Size(93, 23);
             this.button_reports.TabIndex = 2;
             this.button_reports.Text = "Reports";
             this.button_reports.UseVisualStyleBackColor = true;
@@ -73,9 +70,10 @@ namespace Teamerino_Memerino
             // 
             // button_add_record
             // 
-            this.button_add_record.Location = new System.Drawing.Point(723, 26);
+            this.button_add_record.Location = new System.Drawing.Point(542, 21);
+            this.button_add_record.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button_add_record.Name = "button_add_record";
-            this.button_add_record.Size = new System.Drawing.Size(125, 25);
+            this.button_add_record.Size = new System.Drawing.Size(94, 20);
             this.button_add_record.TabIndex = 3;
             this.button_add_record.Text = "Add";
             this.button_add_record.UseVisualStyleBackColor = true;
@@ -84,24 +82,24 @@ namespace Teamerino_Memerino
             // dgv_main
             // 
             this.dgv_main.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_main.Location = new System.Drawing.Point(6, 12);
+            this.dgv_main.Location = new System.Drawing.Point(4, 10);
+            this.dgv_main.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgv_main.Name = "dgv_main";
             this.dgv_main.RowTemplate.Height = 24;
-            this.dgv_main.Size = new System.Drawing.Size(711, 288);
+            this.dgv_main.Size = new System.Drawing.Size(533, 234);
             this.dgv_main.TabIndex = 4;
             // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(861, 312);
+            this.ClientSize = new System.Drawing.Size(646, 254);
             this.Controls.Add(this.dgv_main);
             this.Controls.Add(this.button_add_record);
             this.Controls.Add(this.button_reports);
             this.Controls.Add(this.button_inventory);
             this.Controls.Add(this.button_edit_record);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormMain";
             this.Text = "Main";
             this.Load += new System.EventHandler(this.FormMain_Load);

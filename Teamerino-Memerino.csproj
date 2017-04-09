@@ -76,8 +76,10 @@
     <Compile Include="FormInventory.Designer.cs">
       <DependentUpon>FormInventory.cs</DependentUpon>
     </Compile>
+    <Compile Include="InventoryStruct.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SalesStruct.cs" />
     <EmbeddedResource Include="FormAddEditInv.resx">
       <DependentUpon>FormAddEditInv.cs</DependentUpon>
     </EmbeddedResource>
