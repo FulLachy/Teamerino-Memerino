@@ -12,8 +12,6 @@ namespace Teamerino_Memerino
 {
     public partial class FormInventory : Form
     {
-        FormAddEditInv add_edit_inv = new FormAddEditInv();
-
         public FormInventory()
         {
             InitializeComponent();
