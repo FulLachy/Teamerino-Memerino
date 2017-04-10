@@ -71,7 +71,7 @@ namespace Teamerino_Memerino
             // button_add_record
             // 
             this.button_add_record.Location = new System.Drawing.Point(542, 21);
-            this.button_add_record.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_add_record.Margin = new System.Windows.Forms.Padding(2);
             this.button_add_record.Name = "button_add_record";
             this.button_add_record.Size = new System.Drawing.Size(94, 20);
             this.button_add_record.TabIndex = 3;
@@ -81,10 +81,13 @@ namespace Teamerino_Memerino
             // 
             // dgv_main
             // 
+            this.dgv_main.AllowUserToAddRows = false;
+            this.dgv_main.AllowUserToDeleteRows = false;
             this.dgv_main.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_main.Location = new System.Drawing.Point(4, 10);
-            this.dgv_main.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgv_main.Margin = new System.Windows.Forms.Padding(2);
             this.dgv_main.Name = "dgv_main";
+            this.dgv_main.ReadOnly = true;
             this.dgv_main.RowTemplate.Height = 24;
             this.dgv_main.Size = new System.Drawing.Size(533, 234);
             this.dgv_main.TabIndex = 4;

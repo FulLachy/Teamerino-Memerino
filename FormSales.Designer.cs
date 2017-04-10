@@ -29,11 +29,6 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.RecordNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NumberOfItems = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Time = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button_new_sales_record = new System.Windows.Forms.Button();
             this.button_edit_record = new System.Windows.Forms.Button();
             this.button_delete = new System.Windows.Forms.Button();
@@ -45,47 +40,11 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.RecordNumber,
-            this.NumberOfItems,
-            this.TotalPrice,
-            this.Time,
-            this.Date});
             this.dataGridView1.Location = new System.Drawing.Point(12, 41);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(547, 246);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // RecordNumber
-            // 
-            this.RecordNumber.HeaderText = "Record Number";
-            this.RecordNumber.Name = "RecordNumber";
-            this.RecordNumber.ReadOnly = true;
-            // 
-            // NumberOfItems
-            // 
-            this.NumberOfItems.HeaderText = "NumberOfItems";
-            this.NumberOfItems.Name = "NumberOfItems";
-            this.NumberOfItems.ReadOnly = true;
-            // 
-            // TotalPrice
-            // 
-            this.TotalPrice.HeaderText = "Total Price";
-            this.TotalPrice.Name = "TotalPrice";
-            this.TotalPrice.ReadOnly = true;
-            // 
-            // Time
-            // 
-            this.Time.HeaderText = "Time";
-            this.Time.Name = "Time";
-            this.Time.ReadOnly = true;
-            // 
-            // Date
-            // 
-            this.Date.HeaderText = "Date";
-            this.Date.Name = "Date";
-            this.Date.ReadOnly = true;
             // 
             // button_new_sales_record
             // 
@@ -138,11 +97,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RecordNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NumberOfItems;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TotalPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Time;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Date;
         private System.Windows.Forms.Button button_new_sales_record;
         private System.Windows.Forms.Button button_edit_record;
         private System.Windows.Forms.Button button_delete;

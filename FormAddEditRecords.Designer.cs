@@ -31,10 +31,6 @@
             this.button_save = new System.Windows.Forms.Button();
             this.button_cancel = new System.Windows.Forms.Button();
             this.DGV_AddEditSales = new System.Windows.Forms.DataGridView();
-            this.clm_Barcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bt_Remove = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
@@ -65,37 +61,14 @@
             // 
             // DGV_AddEditSales
             // 
+            this.DGV_AddEditSales.AllowUserToAddRows = false;
             this.DGV_AddEditSales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGV_AddEditSales.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.clm_Barcode,
-            this.clm_ItemName,
-            this.clm_Amount,
-            this.clm_Price});
             this.DGV_AddEditSales.Location = new System.Drawing.Point(266, 12);
             this.DGV_AddEditSales.Name = "DGV_AddEditSales";
+            this.DGV_AddEditSales.ReadOnly = true;
             this.DGV_AddEditSales.Size = new System.Drawing.Size(445, 213);
             this.DGV_AddEditSales.TabIndex = 2;
             this.DGV_AddEditSales.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_AddEditSales_CellContentClick);
-            // 
-            // clm_Barcode
-            // 
-            this.clm_Barcode.HeaderText = "Barcode";
-            this.clm_Barcode.Name = "clm_Barcode";
-            // 
-            // clm_ItemName
-            // 
-            this.clm_ItemName.HeaderText = "Item Name";
-            this.clm_ItemName.Name = "clm_ItemName";
-            // 
-            // clm_Amount
-            // 
-            this.clm_Amount.HeaderText = "Amount";
-            this.clm_Amount.Name = "clm_Amount";
-            // 
-            // clm_Price
-            // 
-            this.clm_Price.HeaderText = "Price";
-            this.clm_Price.Name = "clm_Price";
             // 
             // bt_Remove
             // 
@@ -163,10 +136,6 @@
         private System.Windows.Forms.Button button_save;
         private System.Windows.Forms.Button button_cancel;
         private System.Windows.Forms.DataGridView DGV_AddEditSales;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clm_Barcode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clm_ItemName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clm_Amount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clm_Price;
         private System.Windows.Forms.Button bt_Remove;
         private System.Windows.Forms.TextBox textBox1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;

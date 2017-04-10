@@ -30,7 +30,7 @@ namespace Teamerino_Memerino
 
         private void FormInventory_Load(object sender, EventArgs e)
         {
-            //load in information from text file??
+            Database.Instance.BindInventoryToDVG(DGV_Inv);
         }
 
         private void bt_Remove_Inv_Click(object sender, EventArgs e)
@@ -40,103 +40,52 @@ namespace Teamerino_Memerino
 
         private void bt_Add_Inv_Click(object sender, EventArgs e)
         {
-             int ColumnCount = DGV_Inv.Columns.Count;
-            int RowCount = DGV_Inv.Rows.Count;
+            Database.Instance.AddItem(new InventoryStruct());
+        }
 
-            //This flags make sure you can save
-            bool saveflag = true;
+        private void remove_Click(object sender, EventArgs e)
+        {
+            if (DGV_Inv.CurrentRow == null) return;
+            var item = (InventoryStruct)DGV_Inv.CurrentRow.DataBoundItem;
+            Database.Instance.RemoveItem(item);
+        }
 
-            //This compensates for the error that
-            //a new row is created every time you 
-            //enter into a new line in the DGV
-            bool lastrowemptyflag = false;
+        private void invalidate_cell(DataGridView dgv, DataGridViewCell cell, DataGridViewCellValidatingEventArgs e, String message)
+        {
+            cell.Value = cell.Value;
+            e.Cancel = true;
+            ((DataGridView)dgv).Rows[e.RowIndex].ErrorText = message;
+        }
 
-            int r = 0;
-            int c = 0;
-
-            int intparse;
-            double doubleparse;
-
-            //makes sure there is nothing empty
-            if (RowCount > 1)
+        private void dgv_Cell_Validating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            var dgv = ((DataGridView)sender);
+            string header = dgv.Columns[e.ColumnIndex].HeaderText;
+            var cell = dgv.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            try
             {
-                foreach (DataGridViewCell cell in DGV_Inv.Rows[RowCount - 1].Cells)
+                if (header.Equals("Barcode") || header.Equals("Stock"))
                 {
-                    if (cell.Value == null)
-                    {
-                        lastrowemptyflag = true;
-                    }
+                    var c0 = 0;
+                    if (e.FormattedValue == null || !int.TryParse(e.FormattedValue.ToString(), out c0))
+                        invalidate_cell(dgv, cell, e, header + " Must Be an Integer");
+                }
+                else if (header.Equals("Price"))
+                {
+                    double c0 = 0;
+                    if (e.FormattedValue == null || !double.TryParse(e.FormattedValue.ToString(), out c0))
+                        invalidate_cell(dgv, cell, e, header + " Must be a Number, don't include $ at the start");
                 }
             }
-
-            if (lastrowemptyflag == true)
+            catch
             {
-                RowCount -= 1;
-            }
-
-
-            if (DGV_Inv.Rows.Count == 0)
-            {
-                MessageBox.Show("There is nothing to Save");
-            }
-
-
-            //Checks for the right data type
-            else
-            {
-                for (r = 0; r < RowCount; r++)
-                {
-                    for (c = 0; c < ColumnCount; c++)
-                    {
-
-
-                        if (DGV_Inv.Rows[r].Cells[c].Value == null)
-                        {
-                            MessageBox.Show(DGV_Inv.Columns[c].HeaderText + " is Empty");
-                            saveflag = false;
-                        }
-
-                        else if (DGV_Inv.Columns[c].HeaderText == "Barcode" && int.TryParse(DGV_Inv.Rows[r].Cells[c].Value.ToString(), out intparse) == false)
-                        {
-                            MessageBox.Show(DGV_Inv.Columns[c].HeaderText + " Not an Integer");
-                            saveflag = false;
-                        }
-
-                        else if (DGV_Inv.Columns[c].HeaderText == "Stock" && int.TryParse(DGV_Inv.Rows[r].Cells[c].Value.ToString(), out ColumnCount) == false)
-                        {
-                            MessageBox.Show(DGV_Inv.Columns[c].HeaderText + " Not a Number");
-                            saveflag = false;
-                        }
-
-                        else if (DGV_Inv.Columns[c].HeaderText == "Price Per Item" && double.TryParse(DGV_Inv.Rows[r].Cells[c].Value.ToString(), out doubleparse) == false)
-                        {
-                            MessageBox.Show(DGV_Inv.Columns[c].HeaderText + "Not a Number, don't include $ at the start");
-                            saveflag = false;
-                        }
-                    }
-                }
-                if (saveflag == true)
-                {
-
-
-                    //Saving code here; To notepad file???
-                }
+                invalidate_cell(dgv, cell, e, header + " Unhandled error");
             }
         }
 
-        private void bt_Edit_Inv_Click(object sender, EventArgs e)
+        private void DGV_Inv_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            
-        }
-
-        private void bt_exit_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
+            ((DataGridView)sender).Rows[e.RowIndex].ErrorText = String.Empty;
         }
     }
 }

@@ -3,39 +3,52 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Teamerino_Memerino
 {
     class Database
     {
-        private List<InventoryItem> itemlist;
+        static private Database instance = new Database();
+        static public Database Instance { get { return instance; } }
 
-        private List<SalesRecord> recordlist;
+        private List<InventoryStruct> itemlist = new List<InventoryStruct>();
+        private List<SalesStruct> recordlist = new List<SalesStruct>();
+
+        private BindingSource itemlistBinding = new BindingSource();        
 
         //Load item and record
-        public Database()
+        private Database()
         {
-
+            itemlistBinding.DataSource = typeof(InventoryStruct);
         }
 
-        public List<InventoryItem> ShowItem()
+        public List<InventoryStruct> ShowItem()
         {
-
+            return itemlist;
         }
 
-        public List<SalesRecord> ShowRecord()
+        public List<SalesStruct> ShowRecord()
         {
-
+            return recordlist;
         }
 
-        public void AddItem()
+        public void AddItem(InventoryStruct item)
         {
-
+            itemlist.Add(item);
+            itemlistBinding.Add(item);
         }
 
-        public void DeletItem()
+        public void RemoveItem(InventoryStruct item)
         {
+            itemlist.Remove(item);
+            itemlistBinding.Remove(item);
+        }
 
+        public void BindInventoryToDVG(DataGridView dgv)
+        {
+            dgv.AutoGenerateColumns = true;
+            dgv.DataSource = itemlistBinding;
         }
 
         public void EditItem()
@@ -48,7 +61,7 @@ namespace Teamerino_Memerino
 
         }
 
-        public void DeleteRecord()
+        public void RemoveRecord()
         {
 
         }
@@ -62,8 +75,5 @@ namespace Teamerino_Memerino
         {
 
         }
-
-
-
     }
 }
