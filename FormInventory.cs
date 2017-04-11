@@ -31,11 +31,6 @@ namespace Teamerino_Memerino
             Database.Instance.BindInventoryToDVG(DGV_Inv);
         }
 
-        private void bt_Remove_Inv_Click(object sender, EventArgs e)
-        {
-            //remove selected row
-        }
-
         private void bt_Add_Inv_Click(object sender, EventArgs e)
         {
             Database.Instance.AddItem(new InventoryStruct());
@@ -45,7 +40,11 @@ namespace Teamerino_Memerino
         {
             if (DGV_Inv.CurrentRow == null) return;
             var item = (InventoryStruct)DGV_Inv.CurrentRow.DataBoundItem;
-            Database.Instance.RemoveItem(item);
+            var confirmation = MessageBox.Show("Are you sure you want to remove " + item.ItemName + " from database?", "Confirm Removal", MessageBoxButtons.YesNo);
+            if (confirmation == DialogResult.Yes)
+            {
+                Database.Instance.RemoveItem(item);
+            }
         }
 
         private void invalidate_cell(DataGridView dgv, DataGridViewCell cell, DataGridViewCellValidatingEventArgs e, String message)
@@ -67,6 +66,8 @@ namespace Teamerino_Memerino
                     var c0 = 0;
                     if (e.FormattedValue == null || !int.TryParse(e.FormattedValue.ToString(), out c0))
                         invalidate_cell(dgv, cell, e, header + " Must Be an Integer");
+                    if(c0 < 0)
+                        invalidate_cell(dgv, cell, e, header + " Must Be Positive");
                 }
                 else if (header.Equals("Price"))
                 {
