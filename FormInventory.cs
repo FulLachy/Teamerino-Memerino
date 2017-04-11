@@ -61,7 +61,7 @@ namespace Teamerino_Memerino
             var cell = dgv.Rows[e.RowIndex].Cells[e.ColumnIndex];
             try
             {
-                if (header.Equals("Barcode") || header.Equals("Stock"))
+                if (header.Equals("Barcode") || header.Equals("Stock") || header.Equals("LowStockLevel"))
                 {
                     var c0 = 0;
                     if (e.FormattedValue == null || !int.TryParse(e.FormattedValue.ToString(), out c0))
