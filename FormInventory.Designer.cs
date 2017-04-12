@@ -36,6 +36,8 @@
             // 
             // DGV_Inv
             // 
+            this.DGV_Inv.AllowUserToAddRows = false;
+            this.DGV_Inv.AllowUserToDeleteRows = false;
             this.DGV_Inv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGV_Inv.Location = new System.Drawing.Point(12, 13);
             this.DGV_Inv.Name = "DGV_Inv";
