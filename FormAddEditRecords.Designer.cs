@@ -32,8 +32,7 @@
             this.button_cancel = new System.Windows.Forms.Button();
             this.DGV_AddEditSales = new System.Windows.Forms.DataGridView();
             this.bt_Remove = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.txt_Search = new System.Windows.Forms.TextBox();
             this.button_move_item = new System.Windows.Forms.Button();
             this.listBox_items = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_AddEditSales)).BeginInit();
@@ -41,7 +40,7 @@
             // 
             // button_save
             // 
-            this.button_save.Location = new System.Drawing.Point(717, 43);
+            this.button_save.Location = new System.Drawing.Point(724, 39);
             this.button_save.Name = "button_save";
             this.button_save.Size = new System.Drawing.Size(93, 25);
             this.button_save.TabIndex = 0;
@@ -51,7 +50,7 @@
             // 
             // button_cancel
             // 
-            this.button_cancel.Location = new System.Drawing.Point(717, 200);
+            this.button_cancel.Location = new System.Drawing.Point(724, 200);
             this.button_cancel.Name = "button_cancel";
             this.button_cancel.Size = new System.Drawing.Size(93, 25);
             this.button_cancel.TabIndex = 1;
@@ -66,25 +65,26 @@
             this.DGV_AddEditSales.Location = new System.Drawing.Point(266, 12);
             this.DGV_AddEditSales.Name = "DGV_AddEditSales";
             this.DGV_AddEditSales.ReadOnly = true;
-            this.DGV_AddEditSales.Size = new System.Drawing.Size(445, 213);
+            this.DGV_AddEditSales.Size = new System.Drawing.Size(452, 213);
             this.DGV_AddEditSales.TabIndex = 2;
-            this.DGV_AddEditSales.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_AddEditSales_CellContentClick);
             // 
             // bt_Remove
             // 
-            this.bt_Remove.Location = new System.Drawing.Point(717, 12);
+            this.bt_Remove.Location = new System.Drawing.Point(724, 8);
             this.bt_Remove.Name = "bt_Remove";
             this.bt_Remove.Size = new System.Drawing.Size(93, 25);
             this.bt_Remove.TabIndex = 3;
             this.bt_Remove.Text = "Remove Row";
             this.bt_Remove.UseVisualStyleBackColor = true;
+            this.bt_Remove.Click += new System.EventHandler(this.bt_Remove_Click);
             // 
-            // textBox1
+            // txt_Search
             // 
-            this.textBox1.Location = new System.Drawing.Point(13, 13);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(208, 20);
-            this.textBox1.TabIndex = 4;
+            this.txt_Search.Location = new System.Drawing.Point(13, 13);
+            this.txt_Search.Name = "txt_Search";
+            this.txt_Search.Size = new System.Drawing.Size(208, 20);
+            this.txt_Search.TabIndex = 4;
+            this.txt_Search.TextChanged += new System.EventHandler(this.txt_Search_TextChanged);
             // 
             // button_move_item
             // 
@@ -108,11 +108,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(822, 257);
+            this.ClientSize = new System.Drawing.Size(829, 257);
             this.ControlBox = false;
             this.Controls.Add(this.listBox_items);
             this.Controls.Add(this.button_move_item);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txt_Search);
             this.Controls.Add(this.bt_Remove);
             this.Controls.Add(this.DGV_AddEditSales);
             this.Controls.Add(this.button_cancel);
@@ -137,8 +137,7 @@
         private System.Windows.Forms.Button button_cancel;
         private System.Windows.Forms.DataGridView DGV_AddEditSales;
         private System.Windows.Forms.Button bt_Remove;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.TextBox txt_Search;
         private System.Windows.Forms.Button button_move_item;
         private System.Windows.Forms.ListBox listBox_items;
     }

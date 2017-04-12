@@ -28,116 +28,114 @@ namespace Teamerino_Memerino
 
         private void button_save_Click(object sender, EventArgs e)
         {
-            int ColumnCount = DGV_AddEditSales.Columns.Count;
-            int RowCount = DGV_AddEditSales.Rows.Count;
-            bool saveflag = true;
-            bool lastrowemptyflag = false;
-
-            int r = 0;
-            int c = 0;
-
-            int intparse;
-            double doubleparse;
-
-            //makes sure there is nothing empty
-            if (RowCount > 1)
-            {
-                foreach (DataGridViewCell cell in DGV_AddEditSales.Rows[RowCount - 1].Cells)
-                {
-                    if (cell.Value == null)
-                    {
-                        lastrowemptyflag = true;
-                    }
-                }
-            }
-
-            if (lastrowemptyflag == true)
-            {
-                RowCount -= 1;
-            }
-
-
             if (DGV_AddEditSales.Rows.Count == 0)
             {
                 MessageBox.Show("There is nothing to Save");
             }
 
-            
-            //Checks for the right data type
+            //Checks for each quantity if its an integer higher than 0
             else
             {
-                for (r = 0; r < RowCount; r++)
+                bool success = true;
+
+                foreach (DataGridViewRow row in DGV_AddEditSales.Rows)
                 {
-                    for (c = 0; c < ColumnCount; c++)
+                    int value = 0;
+                    if (int.TryParse(row.Cells[2].Value.ToString(), out value))
                     {
-                   
-
-                            if (DGV_AddEditSales.Rows[r].Cells[c].Value == null)
-                            {
-                                MessageBox.Show(DGV_AddEditSales.Columns[c].HeaderText + " is Empty");
-                                saveflag = false;
-                            }
-
-                            else if (DGV_AddEditSales.Columns[c].HeaderText == "Barcode" && int.TryParse(DGV_AddEditSales.Rows[r].Cells[c].Value.ToString(), out intparse) == false)
-                            {
-                                MessageBox.Show(DGV_AddEditSales.Columns[c].HeaderText + " Not an Integer");
-                                saveflag = false;
-                            }
-
-                            else if (DGV_AddEditSales.Columns[c].HeaderText == "Amount" && int.TryParse(DGV_AddEditSales.Rows[r].Cells[c].Value.ToString(), out ColumnCount) == false)
-                            {
-                                MessageBox.Show(DGV_AddEditSales.Columns[c].HeaderText + " Not a Number");
-                                saveflag = false;
-                            }
-
-                            else if (DGV_AddEditSales.Columns[c].HeaderText == "Price" && double.TryParse(DGV_AddEditSales.Rows[r].Cells[c].Value.ToString(), out doubleparse) == false)
-                            {
-                                MessageBox.Show(DGV_AddEditSales.Columns[c].HeaderText + " Not a Proper Number, no $ at the start");
-                                saveflag = false;
-                            }
+                        if (value <= 0)
+                        {
+                            MessageBox.Show("One of the quantity levels is lower than 0");
+                            row.Selected = true;
+                            success = false;
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("One of the quantity levels is not a number.");
+                        row.Selected = true;
+                        success = false;
+                        break;
                     }
                 }
-                if (saveflag == true)
+
+                if (success)
                 {
-
-
-                    //Enter THE ACTUAL Saving code here
+                    Database.Instance.AddRecord(DGV_AddEditSales);
                 }
-
             }
         }
 
         private void button_cancel_Click(object sender, EventArgs e)
         {
             //Clears information
-            for (int r = 0; r < DGV_AddEditSales.Rows.Count; r++)
-            {
-                for (int c = 0; c < DGV_AddEditSales.Columns.Count; c++)
-                {
-                    DGV_AddEditSales.Rows[r].Cells[c].Value = null;
-                }
-            }
+            DGV_AddEditSales.Rows.Clear();
             Close();
-        }
-
-        private void DGV_AddEditSales_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void FormEditRecord_Load(object sender, EventArgs e)
         {
-            
+            Database.Instance.BindInventoryToListBox(listBox_items);
+            if (DGV_AddEditSales.ColumnCount == 0)
+            {
+                DGV_AddEditSales.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                DGV_AddEditSales.Columns.Add("Barcode", "Barcode");
+                DGV_AddEditSales.Columns.Add("ItemName", "Item Name");
+                DGV_AddEditSales.Columns.Add("Quantity", "Quantity");
+
+                DGV_AddEditSales.ReadOnly = false;
+
+                for (int i = 0; i < DGV_AddEditSales.ColumnCount; i++)
+                {
+                    if (DGV_AddEditSales.Columns[i].HeaderText != "Quantity")
+                    {
+                        DGV_AddEditSales.Columns[i].ReadOnly = true;
+                    }
+                }
+            }
         }
 
         private void button_move_item_Click(object sender, EventArgs e)
         {
+            InventoryStruct theItem = (InventoryStruct)listBox_items.SelectedItem;
+            bool found = false;
 
+            //Attempts to find the item in the current stock table
+            foreach (DataGridViewRow row in DGV_AddEditSales.Rows)
+            {
+                if (row.Cells[0].Value.Equals(theItem.Barcode))
+                {
+                    row.Selected = true;
+                    found = true;
+                    break;
+                }
+            }
+
+            //If the item is not in the stock table then it adds the item
+            if (!found)
+            {
+                DGV_AddEditSales.Rows.Add(theItem.Barcode, theItem.ItemName, "0");
+            }
         }
 
         private void comboBox_item_list_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void bt_Remove_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow item in this.DGV_AddEditSales.SelectedRows)
+            {
+                DGV_AddEditSales.Rows.RemoveAt(item.Index);
+            }
+        }
+
+        private void txt_Search_TextChanged(object sender, EventArgs e)
+        {
+            //Search code goes here
         }
     }
 }

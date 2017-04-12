@@ -75,5 +75,10 @@ namespace Teamerino_Memerino
                 _price = value;
             }
         }
+
+        public override string ToString()
+        {
+            return ItemName;
+        }
     }
 }

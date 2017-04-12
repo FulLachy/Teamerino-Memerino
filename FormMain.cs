@@ -12,11 +12,19 @@ namespace Teamerino_Memerino
 {
     public partial class FormMain : Form
     {
-        FormSales form_sales = new FormSales();
+        FormAddSalesRecord form_sales = new FormAddSalesRecord();
         FormInventory form_inventory = new FormInventory();
         public FormMain()
         {
             InitializeComponent();
+            InventoryStruct dummy = new InventoryStruct();
+            dummy.Barcode = 132312;
+            dummy.ItemName = "fajsdh";
+            dummy.LowStockLevel = 213;
+            dummy.Price = 10.50;
+            dummy.Stock = 125125;
+
+            Database.Instance.AddItem(dummy);
         }
 
         private void button_inventory_Click(object sender, EventArgs e)
@@ -31,7 +39,10 @@ namespace Teamerino_Memerino
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-
+            Database.Instance.BindSalesToDVG(dgv_main);
+            dgv_main.Columns.Remove("ItemQuantity");
+            dgv_main.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgv_main.AutoResizeColumns();
         }
 
         private void button_add_record_Click(object sender, EventArgs e)
