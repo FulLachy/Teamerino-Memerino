@@ -135,7 +135,18 @@ namespace Teamerino_Memerino
 
         private void txt_Search_TextChanged(object sender, EventArgs e)
         {
-            //Search code goes here
+            BindingSource tempSource = new BindingSource();
+            tempSource.DataSource = typeof(InventoryStruct);
+
+            foreach(InventoryStruct item in Database.Instance.ShowItem())
+            {
+                if (item.ItemName.Contains(txt_Search.Text))
+                {
+                    tempSource.Add(item);
+                }
+            }
+
+            listBox_items.DataSource = tempSource;
         }
     }
 }
