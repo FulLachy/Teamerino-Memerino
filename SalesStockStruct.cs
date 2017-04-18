@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Teamerino_Memerino
 {
-    class SalesStockStruct
+    public class SalesStockStruct
     {
         //The index crosses over, that is item with barcode[0] has quantity[0]
         private List<int> _barcode = new List<int>();

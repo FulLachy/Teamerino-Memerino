@@ -12,6 +12,8 @@ namespace Teamerino_Memerino
 {
     public partial class FormAddSalesRecord : Form
     {
+        private SalesStruct _recordToEdit;
+
         public FormAddSalesRecord()
         {
             InitializeComponent();
@@ -28,6 +30,7 @@ namespace Teamerino_Memerino
 
         private void button_save_Click(object sender, EventArgs e)
         {
+            //The record does not save if no items have been added to the record
             if (DGV_AddEditSales.Rows.Count == 0)
             {
                 MessageBox.Show("There is nothing to Save");
@@ -41,8 +44,10 @@ namespace Teamerino_Memerino
                 foreach (DataGridViewRow row in DGV_AddEditSales.Rows)
                 {
                     int value = 0;
+                    //The program attempts to convert the value into an integer
                     if (int.TryParse(row.Cells[2].Value.ToString(), out value))
                     {
+                        //The record will not be saved if the value is less or equal to 0
                         if (value <= 0)
                         {
                             MessageBox.Show("One of the quantity levels is lower than 0");
@@ -51,6 +56,7 @@ namespace Teamerino_Memerino
                             break;
                         }
                     }
+                    //If the attempt failed, the record will not be saved
                     else
                     {
                         MessageBox.Show("One of the quantity levels is not a number.");
@@ -60,9 +66,19 @@ namespace Teamerino_Memerino
                     }
                 }
 
+                //if all of the items have passed validation, the record will be saved
                 if (success)
                 {
-                    Database.Instance.AddRecord(DGV_AddEditSales);
+                    if (RecordToEdit == null)
+                    {
+                        Database.Instance.AddRecord(DGV_AddEditSales);
+                    } else
+                    {
+                        Database.Instance.EditRecord(DGV_AddEditSales, RecordToEdit);
+                    }
+
+                    DGV_AddEditSales.Rows.Clear();
+                    Close();
                 }
             }
         }
@@ -77,6 +93,8 @@ namespace Teamerino_Memerino
         private void FormEditRecord_Load(object sender, EventArgs e)
         {
             Database.Instance.BindInventoryToListBox(listBox_items);
+            //This if statement will only execute the first time the form loads
+            //It will add the columns necessary to the table
             if (DGV_AddEditSales.ColumnCount == 0)
             {
                 DGV_AddEditSales.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -93,6 +111,16 @@ namespace Teamerino_Memerino
                     {
                         DGV_AddEditSales.Columns[i].ReadOnly = true;
                     }
+                }
+            }
+
+            if (_recordToEdit != null)
+            {
+                SalesStockStruct itemStock = _recordToEdit.ItemQuantity;
+                for (int i = 0; i < itemStock.Barcode.Count; i++)
+                {
+                    InventoryStruct item = Database.Instance.ShowItem().Find(x => x.Barcode == itemStock.Barcode[i]);
+                    DGV_AddEditSales.Rows.Add(item.Barcode, item.ItemName, itemStock.Quantity[i]);
                 }
             }
         }
@@ -127,7 +155,8 @@ namespace Teamerino_Memerino
 
         private void bt_Remove_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow item in this.DGV_AddEditSales.SelectedRows)
+            //Removes the selected items
+            foreach (DataGridViewRow item in DGV_AddEditSales.SelectedRows)
             {
                 DGV_AddEditSales.Rows.RemoveAt(item.Index);
             }
@@ -138,6 +167,7 @@ namespace Teamerino_Memerino
             BindingSource tempSource = new BindingSource();
             tempSource.DataSource = typeof(InventoryStruct);
 
+            //Only items that have the same name in the text box will be shown
             foreach(InventoryStruct item in Database.Instance.ShowItem())
             {
                 if (item.ItemName.Contains(txt_Search.Text))
@@ -147,6 +177,18 @@ namespace Teamerino_Memerino
             }
 
             listBox_items.DataSource = tempSource;
+        }
+
+        public SalesStruct RecordToEdit
+        {
+            get
+            {
+                return _recordToEdit;
+            }
+            set
+            {
+                _recordToEdit = value;
+            }
         }
     }
 }

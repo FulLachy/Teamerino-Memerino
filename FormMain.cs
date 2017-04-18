@@ -47,13 +47,25 @@ namespace Teamerino_Memerino
 
         private void button_add_record_Click(object sender, EventArgs e)
         {
+            form_sales.RecordToEdit = null;
             form_sales.ShowDialog();
         }
 
         private void button_edit_record_Click(object sender, EventArgs e)
         {
-            form_sales.ShowDialog();
+            //The record is passed over to the sales form
+            if (dgv_main.SelectedCells.Count != 0)
+            {
+                DataGridViewRow theRow = dgv_main.Rows[dgv_main.SelectedCells[0].RowIndex];
+                List<SalesStruct> theRecords = Database.Instance.ShowRecord();
+                form_sales.RecordToEdit = theRecords.Find(x => x.RecordNum == (int)theRow.Cells[0].Value);
+                form_sales.ShowDialog();
+            }
+            //If there are no selected cells then the form will not show up
+            else
+            {
+                MessageBox.Show("Please select a sales record.");
+            }
         }
-
     }
 }

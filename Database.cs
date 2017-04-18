@@ -104,9 +104,32 @@ namespace Teamerino_Memerino
 
         }
 
-        public void EditRecord()
+        public void EditRecord(DataGridView dgv, SalesStruct recordToEdit)
         {
+            int index = recordlist.FindIndex(x => x == recordToEdit);
+            SalesStruct newRecord = recordlist[index];
 
+            newRecord.ItemQuantity = new SalesStockStruct();
+            foreach (DataGridViewRow row in dgv.Rows)
+            {
+                InventoryStruct theItem = new InventoryStruct();
+
+                foreach (InventoryStruct i in itemlist)
+                {
+                    if (i.Barcode == int.Parse(row.Cells[0].Value.ToString()))
+                    {
+                        theItem = i;
+                        break;
+                    }
+                }
+
+                newRecord.Price += theItem.Price * int.Parse(row.Cells[2].Value.ToString());
+                newRecord.ItemQuantity.Barcode.Add((int)row.Cells[0].Value);
+                newRecord.ItemQuantity.Quantity.Add(int.Parse(row.Cells[2].Value.ToString()));
+            }
+
+            recordlistBinding[index] = newRecord;
+            recordlist[index] = newRecord;
         }
 
         public void WriteToFile()

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Teamerino_Memerino
 {
-    class SalesStruct
+    public class SalesStruct
     {
             
         private int _recnum;
@@ -70,6 +70,10 @@ namespace Teamerino_Memerino
             get
             {
                 return _itemQuantity;
+            }
+            set
+            {
+                _itemQuantity = value;
             }
         }
 

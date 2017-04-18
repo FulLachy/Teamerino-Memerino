@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Teamerino_Memerino
 {
-    class InventoryStruct
+    public class InventoryStruct
     {
         private int _barcode;
         private string _itemname;
