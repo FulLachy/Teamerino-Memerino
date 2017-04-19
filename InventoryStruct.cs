@@ -8,11 +8,11 @@ namespace Teamerino_Memerino
 {
     public class InventoryStruct
     {
-        private int _barcode;
-        private string _itemname;
-        private int _stock;
-        private int _lowstock;
-        private double _price;
+        private int _barcode     = 0;
+        private string _itemname = "";
+        private int _stock       = 0;
+        private int _lowstock    = 0;
+        private double _price    = 0.0;
 
         public int Barcode
         {
