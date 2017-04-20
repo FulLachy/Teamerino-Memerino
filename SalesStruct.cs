@@ -14,7 +14,7 @@ namespace Teamerino_Memerino
         private string _date;
         private string _time;
         //index int refers to barcode, value int refers to quantity
-        private SalesStockStruct _itemQuantity = new SalesStockStruct();
+        private List<SalesStockStruct> _itemQuantity = new List<SalesStockStruct>();
 
         public int RecordNum
         {
@@ -65,7 +65,7 @@ namespace Teamerino_Memerino
             }
         }
 
-        public SalesStockStruct ItemQuantity
+        public List<SalesStockStruct> ItemQuantity
         {
             get
             {

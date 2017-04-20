@@ -72,15 +72,18 @@ namespace Teamerino_Memerino
         {
             SalesStruct Record = new SalesStruct();
 
+            //Sets the sales record information
             Record.RecordNum = recordlist.Count + 1;
             Record.Time = DateTime.Now.ToString("h:mm:ss");
             Record.Date = DateTime.Today.ToString("d");
             Record.Price = 0.00;
 
+            //Sets the item quantity information
             foreach (DataGridViewRow row in dgv.Rows)
             {
                 InventoryStruct theItem = new InventoryStruct();
 
+                //This finds the item that will be added
                 foreach (InventoryStruct i in itemlist)
                 {
                     if (i.Barcode == int.Parse(row.Cells[0].Value.ToString()))
@@ -91,8 +94,11 @@ namespace Teamerino_Memerino
                 }
 
                 Record.Price += theItem.Price * int.Parse(row.Cells[2].Value.ToString());
-                Record.ItemQuantity.Barcode.Add((int)row.Cells[0].Value);
-                Record.ItemQuantity.Quantity.Add(int.Parse(row.Cells[2].Value.ToString()));
+
+                SalesStockStruct tempStock = new SalesStockStruct();
+                tempStock.Barcode = (int)row.Cells[0].Value;
+                tempStock.Quantity = int.Parse(row.Cells[2].Value.ToString());
+                Record.ItemQuantity.Add(tempStock);
             }
 
             recordlist.Add(Record);
@@ -106,14 +112,19 @@ namespace Teamerino_Memerino
 
         public void EditRecord(DataGridView dgv, SalesStruct recordToEdit)
         {
+            //Gets the record that needs to be edited and copies it over
             int index = recordlist.FindIndex(x => x == recordToEdit);
             SalesStruct newRecord = recordlist[index];
 
-            newRecord.ItemQuantity = new SalesStockStruct();
+            //Resets the item quantity
+            newRecord.ItemQuantity = new List<SalesStockStruct>();
+
+            //Adds in the new item stocks to the record
             foreach (DataGridViewRow row in dgv.Rows)
             {
                 InventoryStruct theItem = new InventoryStruct();
 
+                //This finds the item that will be added
                 foreach (InventoryStruct i in itemlist)
                 {
                     if (i.Barcode == int.Parse(row.Cells[0].Value.ToString()))
@@ -124,8 +135,11 @@ namespace Teamerino_Memerino
                 }
 
                 newRecord.Price += theItem.Price * int.Parse(row.Cells[2].Value.ToString());
-                newRecord.ItemQuantity.Barcode.Add((int)row.Cells[0].Value);
-                newRecord.ItemQuantity.Quantity.Add(int.Parse(row.Cells[2].Value.ToString()));
+
+                SalesStockStruct tempStock = new SalesStockStruct();
+                tempStock.Barcode = (int)row.Cells[0].Value;
+                tempStock.Quantity = int.Parse(row.Cells[2].Value.ToString());
+                newRecord.ItemQuantity.Add(tempStock);
             }
 
             recordlistBinding[index] = newRecord;

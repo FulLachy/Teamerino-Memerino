@@ -40,7 +40,6 @@ namespace Teamerino_Memerino
         private void FormMain_Load(object sender, EventArgs e)
         {
             Database.Instance.BindSalesToDVG(dgv_main);
-            dgv_main.Columns.Remove("ItemQuantity");
             dgv_main.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgv_main.AutoResizeColumns();
         }

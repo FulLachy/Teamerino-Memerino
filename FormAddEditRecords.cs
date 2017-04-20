@@ -116,11 +116,11 @@ namespace Teamerino_Memerino
 
             if (_recordToEdit != null)
             {
-                SalesStockStruct itemStock = _recordToEdit.ItemQuantity;
-                for (int i = 0; i < itemStock.Barcode.Count; i++)
+                List<SalesStockStruct> itemStock = _recordToEdit.ItemQuantity;
+                for (int i = 0; i < itemStock.Count; i++)
                 {
-                    InventoryStruct item = Database.Instance.ShowItem().Find(x => x.Barcode == itemStock.Barcode[i]);
-                    DGV_AddEditSales.Rows.Add(item.Barcode, item.ItemName, itemStock.Quantity[i]);
+                    InventoryStruct item = Database.Instance.ShowItem().Find(x => x.Barcode == itemStock[i].Barcode);
+                    DGV_AddEditSales.Rows.Add(item.Barcode, item.ItemName, itemStock[i].Quantity);
                 }
             }
         }

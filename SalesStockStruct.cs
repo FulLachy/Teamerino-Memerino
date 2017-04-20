@@ -8,11 +8,10 @@ namespace Teamerino_Memerino
 {
     public class SalesStockStruct
     {
-        //The index crosses over, that is item with barcode[0] has quantity[0]
-        private List<int> _barcode = new List<int>();
-        private List<int> _quantity = new List<int>();
+        private int _barcode = new int();
+        private int _quantity = new int();
 
-        public List<int> Barcode
+        public int Barcode
         {
             get
             {
@@ -25,7 +24,7 @@ namespace Teamerino_Memerino
             }
         }
 
-        public List<int> Quantity
+        public int Quantity
         {
             get
             {
