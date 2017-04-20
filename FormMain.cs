@@ -20,9 +20,9 @@ namespace Teamerino_Memerino
             InventoryStruct dummy = new InventoryStruct();
             dummy.Barcode = 132312;
             dummy.ItemName = "fajsdh";
-            dummy.LowStockLevel = 213;
+            dummy.LowStockLevel = 10;
             dummy.Price = 10.50;
-            dummy.Stock = 125125;
+            dummy.Stock = 15;
 
             Database.Instance.AddItem(dummy);
         }

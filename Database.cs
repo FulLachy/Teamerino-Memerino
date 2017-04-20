@@ -81,24 +81,25 @@ namespace Teamerino_Memerino
             //Sets the item quantity information
             foreach (DataGridViewRow row in dgv.Rows)
             {
-                InventoryStruct theItem = new InventoryStruct();
-
-                //This finds the item that will be added
-                foreach (InventoryStruct i in itemlist)
-                {
-                    if (i.Barcode == int.Parse(row.Cells[0].Value.ToString()))
-                    {
-                        theItem = i;
-                        break;
-                    }
-                }
-
+                InventoryStruct theItem = FindItemByBarcorde(int.Parse(row.Cells[0].Value.ToString()));
                 Record.Price += theItem.Price * int.Parse(row.Cells[2].Value.ToString());
 
+                //Creates the item stock and adds it to the sales record
                 SalesStockStruct tempStock = new SalesStockStruct();
                 tempStock.Barcode = (int)row.Cells[0].Value;
                 tempStock.Quantity = int.Parse(row.Cells[2].Value.ToString());
                 Record.ItemQuantity.Add(tempStock);
+
+                //Sets the quantity of the item accordingly
+                theItem.Stock -= tempStock.Quantity;
+                if (theItem.Stock < 0)
+                {
+                    MessageBox.Show("Warning: " + theItem.ItemName + " stock level has gone negative!");
+                }
+                else if (theItem.Stock < theItem.LowStockLevel)
+                {
+                    MessageBox.Show("Warning: " + theItem.ItemName + " stock level is running low!");
+                }
             }
 
             recordlist.Add(Record);
@@ -112,38 +113,60 @@ namespace Teamerino_Memerino
 
         public void EditRecord(DataGridView dgv, SalesStruct recordToEdit)
         {
-            //Gets the record that needs to be edited and copies it over
+            //Gets the record that needs to be edited
             int index = recordlist.FindIndex(x => x == recordToEdit);
-            SalesStruct newRecord = recordlist[index];
 
-            //Resets the item quantity
-            newRecord.ItemQuantity = new List<SalesStockStruct>();
+            //Increases the stock of each item that was in the sales record
+            foreach (SalesStockStruct stockToIncrease in recordlist[index].ItemQuantity)
+            {
+                InventoryStruct theItem = FindItemByBarcorde(stockToIncrease.Barcode);
+                theItem.Stock += stockToIncrease.Quantity;
+            }
+
+            recordlist[index].ItemQuantity = new List<SalesStockStruct>();
+            recordlist[index].Price = 0;
 
             //Adds in the new item stocks to the record
             foreach (DataGridViewRow row in dgv.Rows)
             {
-                InventoryStruct theItem = new InventoryStruct();
-
-                //This finds the item that will be added
-                foreach (InventoryStruct i in itemlist)
-                {
-                    if (i.Barcode == int.Parse(row.Cells[0].Value.ToString()))
-                    {
-                        theItem = i;
-                        break;
-                    }
-                }
-
-                newRecord.Price += theItem.Price * int.Parse(row.Cells[2].Value.ToString());
+                InventoryStruct theItem = FindItemByBarcorde(int.Parse(row.Cells[0].Value.ToString()));
+                recordlist[index].Price += theItem.Price * int.Parse(row.Cells[2].Value.ToString());
 
                 SalesStockStruct tempStock = new SalesStockStruct();
                 tempStock.Barcode = (int)row.Cells[0].Value;
                 tempStock.Quantity = int.Parse(row.Cells[2].Value.ToString());
-                newRecord.ItemQuantity.Add(tempStock);
+                recordlist[index].ItemQuantity.Add(tempStock);
+
+                //Sets the quantity of the item accordingly
+                theItem.Stock -= tempStock.Quantity;
+                if (theItem.Stock < 0)
+                {
+                    MessageBox.Show("Warning: " + theItem.ItemName + " stock level has gone negative!");
+                }
+                else if (theItem.Stock < theItem.LowStockLevel)
+                {
+                    MessageBox.Show("Warning: " + theItem.ItemName + " stock level is running low!");
+                }
             }
 
-            recordlistBinding[index] = newRecord;
-            recordlist[index] = newRecord;
+            recordlistBinding[index] = recordlist[index];
+        }
+
+        //This method finds a item using a given barcode
+        private InventoryStruct FindItemByBarcorde(int barcode)
+        {
+            InventoryStruct theItem = new InventoryStruct();
+
+            foreach (InventoryStruct i in itemlist)
+            {
+                if (i.Barcode == barcode)
+                {
+                    theItem = i;
+                    break;
+                }
+            }
+
+            return theItem;
         }
 
         public void WriteToFile()
