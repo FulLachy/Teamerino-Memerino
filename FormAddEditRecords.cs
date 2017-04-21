@@ -142,7 +142,7 @@ namespace Teamerino_Memerino
             }
 
             //If the item is not in the stock table then it adds the item
-            if (!found)
+            if (!found && theItem != null)
             {
                 DGV_AddEditSales.Rows.Add(theItem.Barcode, theItem.ItemName, "0");
             }
