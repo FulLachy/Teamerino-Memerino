@@ -12,6 +12,8 @@ namespace Teamerino_Memerino
         static private Database instance = new Database();
         static public Database Instance { get { return instance; } }
 
+        private int number = 1;
+
         private List<InventoryStruct> itemlist = new List<InventoryStruct>();
         private List<SalesStruct> recordlist = new List<SalesStruct>();
 
