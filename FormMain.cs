@@ -17,14 +17,6 @@ namespace Teamerino_Memerino
         public FormMain()
         {
             InitializeComponent();
-            InventoryStruct dummy = new InventoryStruct();
-            dummy.Barcode = 132312;
-            dummy.ItemName = "fajsdh";
-            dummy.LowStockLevel = 10;
-            dummy.Price = 10.50;
-            dummy.Stock = 15;
-
-            Database.Instance.AddItem(dummy);
         }
 
         private void button_inventory_Click(object sender, EventArgs e)
@@ -42,6 +34,8 @@ namespace Teamerino_Memerino
             Database.Instance.BindSalesToDVG(dgv_main);
             dgv_main.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgv_main.AutoResizeColumns();
+            Database.Instance.LoadItems();
+            Database.Instance.LoadRecords();
         }
 
         private void button_add_record_Click(object sender, EventArgs e)
