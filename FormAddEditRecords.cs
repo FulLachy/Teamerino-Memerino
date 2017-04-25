@@ -14,9 +14,33 @@ namespace Teamerino_Memerino
     {
         private SalesStruct _recordToEdit;
 
+
+
         public FormAddSalesRecord()
         {
             InitializeComponent();
+            txt_Search.ForeColor = SystemColors.GrayText;
+            txt_Search.Text = "Search Here...";
+            txt_Search.Leave += new System.EventHandler(this.txt_Search_Leave);
+            txt_Search.Enter += new System.EventHandler(this.txt_Search_Enter);
+        }
+
+        private void txt_Search_Leave(object sender, EventArgs e)
+        {
+            if (txt_Search.Text.Length == 0)
+            {
+                txt_Search.ForeColor = SystemColors.GrayText;
+                txt_Search.Text = "Search Here...";
+            }
+        }
+
+        private void txt_Search_Enter(object sender, EventArgs e)
+        {
+            if (txt_Search.Text == "Search Here...")
+            {
+                txt_Search.Text = "";
+                txt_Search.ForeColor = SystemColors.WindowText;
+            }
         }
 
         private void FormAddEditRecord_FormClosing(object sender, FormClosingEventArgs e)
@@ -85,9 +109,7 @@ namespace Teamerino_Memerino
 
         private void button_cancel_Click(object sender, EventArgs e)
         {
-            //Clears information
-            DGV_AddEditSales.Rows.Clear();
-            Close();
+           Close();
         }
 
         private void FormEditRecord_Load(object sender, EventArgs e)
@@ -168,15 +190,18 @@ namespace Teamerino_Memerino
             tempSource.DataSource = typeof(InventoryStruct);
 
             //Only items that have the same name in the text box will be shown
-            foreach(InventoryStruct item in Database.Instance.ShowItem())
+            if (txt_Search.Text != "Search Here...")
             {
-                if (item.ItemName.Contains(txt_Search.Text))
+                foreach (InventoryStruct item in Database.Instance.ShowItem())
                 {
-                    tempSource.Add(item);
+                    if (item.ItemName.Contains(txt_Search.Text))
+                    {
+                        tempSource.Add(item);
+                    }
                 }
-            }
 
-            listBox_items.DataSource = tempSource;
+                listBox_items.DataSource = tempSource;
+            }
         }
 
         public SalesStruct RecordToEdit

@@ -84,6 +84,7 @@
             this.txt_Search.Name = "txt_Search";
             this.txt_Search.Size = new System.Drawing.Size(208, 20);
             this.txt_Search.TabIndex = 4;
+            this.txt_Search.Text = "Search Here... U+1F50D";
             this.txt_Search.TextChanged += new System.EventHandler(this.txt_Search_TextChanged);
             // 
             // button_move_item
@@ -121,7 +122,7 @@
             this.MinimizeBox = false;
             this.Name = "FormAddSalesRecord";
             this.ShowIcon = false;
-            this.Text = "Add or Edit Sales Record";
+            this.Text = "People Health Pharmacy (Add or Edit Sales Record)";
             this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormAddEditRecord_FormClosing);
             this.Load += new System.EventHandler(this.FormEditRecord_Load);
