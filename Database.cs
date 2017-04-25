@@ -23,7 +23,6 @@ namespace Teamerino_Memerino
             itemlistBinding.DataSource = typeof(InventoryItem);
             recordlistBinding.DataSource = typeof(SalesRecord);
 
-            //instance = this;// Stupid I know, but LoadItems and LoadRecords rely on instance to be set before the constructor finishes
             LoadItems();
             LoadRecords();
 
