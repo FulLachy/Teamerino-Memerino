@@ -14,6 +14,8 @@ namespace Teamerino_Memerino
     {
         FormAddEditRecords form_sales = new FormAddEditRecords();
         FormInventory form_inventory = new FormInventory();
+        FormReports form_reports = new FormReports();
+
         public FormMain()
         {
             InitializeComponent();
@@ -26,7 +28,7 @@ namespace Teamerino_Memerino
 
         private void button_reports_Click(object sender, EventArgs e)
         {
-
+            form_reports.ShowDialog();
         }
 
         private void FormMain_Load(object sender, EventArgs e)
