@@ -12,7 +12,7 @@ namespace Teamerino_Memerino
 {
     public partial class FormMain : Form
     {
-        FormAddSalesRecord form_sales = new FormAddSalesRecord();
+        FormAddEditRecords form_sales = new FormAddEditRecords();
         FormInventory form_inventory = new FormInventory();
         public FormMain()
         {

@@ -1,6 +1,6 @@
 ﻿namespace Teamerino_Memerino
 {
-    partial class FormAddSalesRecord
+    partial class FormAddEditRecords
     {
         /// <summary>
         /// Required designer variable.

@@ -10,13 +10,13 @@ using System.Windows.Forms;
 
 namespace Teamerino_Memerino
 {
-    public partial class FormAddSalesRecord : Form
+    public partial class FormAddEditRecords : Form
     {
         private SalesRecord _recordToEdit;
 
 
 
-        public FormAddSalesRecord()
+        public FormAddEditRecords()
         {
             InitializeComponent();
             txt_Search.ForeColor = SystemColors.GrayText;
