@@ -79,27 +79,28 @@ namespace Teamerino_Memerino
                 return result;
         }
 
-        public void AddRecord(SalesRecord record)
+        public void AddRecord(SalesRecord record, bool subtractFromInventory = true)
         {
             recordlist.Add(record);
             recordlistBinding.Add(record);
 
-            foreach (SalesRecordItem saleItem in record.Items)
-            {
-                InventoryItem invItem = FindItemByBarcorde(saleItem.Barcode);
-                if (invItem != null)
+            if (subtractFromInventory)
+                foreach (SalesRecordItem saleItem in record.Items)
                 {
-                    invItem.Stock -= saleItem.Quantity;
-                    if (invItem.Stock < 0)
+                    InventoryItem invItem = FindItemByBarcorde(saleItem.Barcode);
+                    if (invItem != null)
                     {
-                        MessageBox.Show("Warning: " + invItem.ItemName + " stock level has gone negative!");
-                    }
-                    else if (invItem.Stock < invItem.LowStockLevel)
-                    {
-                        MessageBox.Show("Warning: " + invItem.ItemName + " stock level is running low!");
+                        invItem.Stock -= saleItem.Quantity;
+                        if (invItem.Stock < 0)
+                        {
+                            MessageBox.Show(new Form() { TopMost = true }, "Warning: " + invItem.ItemName + " stock level has gone negative!");
+                        }
+                        else if (invItem.Stock < invItem.LowStockLevel)
+                        {
+                            MessageBox.Show(new Form() { TopMost = true }, "Warning: " + invItem.ItemName + " stock level is running low!");
+                        }
                     }
                 }
-            }
         }
 
         public void AddOrEditRecord(SalesRecord record)
@@ -143,7 +144,7 @@ namespace Teamerino_Memerino
             if (rows.Count <= 1) return;
             rows.ForEach(x => {
                 SalesRecord loadRecord = new SalesRecord(x);
-                AddRecord(loadRecord);
+                AddRecord(loadRecord, false);
             });
         }
 

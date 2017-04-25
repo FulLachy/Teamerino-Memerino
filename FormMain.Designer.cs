@@ -118,6 +118,7 @@ namespace Teamerino_Memerino
             this.Controls.Add(this.button_edit_record);
             this.Name = "FormMain";
             this.Text = "People Health Pharmacy (Main Menu)";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.FormMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_main)).EndInit();
             this.ResumeLayout(false);
