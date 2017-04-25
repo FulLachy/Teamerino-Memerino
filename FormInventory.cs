@@ -24,7 +24,6 @@ namespace Teamerino_Memerino
                 e.Cancel = true;
                 Hide();
             }
-            Database.Instance.WriteItems("...//...//Resources//Items//inventory.txt", DGV_Inv);
         }
 
         private void FormInventory_Load(object sender, EventArgs e)

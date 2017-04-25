@@ -91,6 +91,7 @@ namespace Teamerino_Memerino
             {
                 _recordToEdit.AddItem(new SalesRecordItem(invItem.Barcode, 1, invItem.PricePerUnit));
             }
+            _recordToEdit.NotifyPropertyChanged("Price");
         }
 
         private void comboBox_item_list_SelectedIndexChanged(object sender, EventArgs e)
@@ -135,6 +136,8 @@ namespace Teamerino_Memerino
             {
                 _recordToEdit = value;
                 _recordToEdit.bindItemsToDGV(DGV_AddEditSales);
+                label_Total.DataBindings.Clear();
+                label_Total.DataBindings.Add("Text", _recordToEdit, "Price");
             }
         }
 
@@ -160,6 +163,8 @@ namespace Teamerino_Memerino
                         invalidate_cell(dgv, cell, e, header + " Must Be an Integer");
                     else if (c0 <= 0)
                         invalidate_cell(dgv, cell, e, header + " Must Be Positive");
+                    else
+                        _recordToEdit.NotifyPropertyChanged("Price");
                 }
             }
             catch

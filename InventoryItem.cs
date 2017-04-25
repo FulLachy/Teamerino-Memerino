@@ -14,6 +14,30 @@ namespace Teamerino_Memerino
         private int _lowstock    = 0;
         private double _price    = 0.0;
 
+        public InventoryItem()
+        {
+
+        }
+
+        public InventoryItem(string[] x)
+        {
+            Int32.TryParse(x[0], out _barcode);
+            _itemname = x[1];
+            Int32.TryParse(x[2], out _stock);
+            Int32.TryParse(x[3], out _lowstock);
+            Double.TryParse(x[4], out _price);
+        }
+
+        public string ToCSV()
+        {
+            string result = _barcode.ToString()  + ","
+                          + _itemname.ToString() + ","
+                          + _stock.ToString()    + "," 
+                          + _lowstock.ToString() + "," 
+                          + _price.ToString();
+            return result;
+        }
+
         public int Barcode
         {
             get

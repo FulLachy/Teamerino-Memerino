@@ -34,8 +34,6 @@ namespace Teamerino_Memerino
             Database.Instance.BindSalesToDVG(dgv_main);
             dgv_main.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgv_main.AutoResizeColumns();
-            Database.Instance.LoadItems();
-            Database.Instance.LoadRecords();
         }
 
         private void button_add_record_Click(object sender, EventArgs e)

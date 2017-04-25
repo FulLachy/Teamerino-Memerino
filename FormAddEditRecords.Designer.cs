@@ -35,6 +35,7 @@
             this.txt_Search = new System.Windows.Forms.TextBox();
             this.button_move_item = new System.Windows.Forms.Button();
             this.listBox_items = new System.Windows.Forms.ListBox();
+            this.label_Total = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_AddEditSales)).BeginInit();
             this.SuspendLayout();
             // 
@@ -106,12 +107,22 @@
             this.listBox_items.Size = new System.Drawing.Size(208, 173);
             this.listBox_items.TabIndex = 7;
             // 
+            // label_Total
+            // 
+            this.label_Total.AutoSize = true;
+            this.label_Total.Location = new System.Drawing.Point(724, 184);
+            this.label_Total.Name = "label_Total";
+            this.label_Total.Size = new System.Drawing.Size(43, 13);
+            this.label_Total.TabIndex = 8;
+            this.label_Total.Text = "Total: $";
+            // 
             // FormAddSalesRecord
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(829, 257);
             this.ControlBox = false;
+            this.Controls.Add(this.label_Total);
             this.Controls.Add(this.listBox_items);
             this.Controls.Add(this.button_move_item);
             this.Controls.Add(this.txt_Search);
@@ -142,5 +153,6 @@
         private System.Windows.Forms.TextBox txt_Search;
         private System.Windows.Forms.Button button_move_item;
         private System.Windows.Forms.ListBox listBox_items;
+        private System.Windows.Forms.Label label_Total;
     }
 }

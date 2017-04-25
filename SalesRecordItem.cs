@@ -32,6 +32,14 @@ namespace Teamerino_Memerino
             return (SalesRecordItem)MemberwiseClone();
         }
 
+        public string ToCSV()
+        {
+            string result = _barcode.ToString() + ","
+                          + _quantity.ToString() + ","
+                          + _pricePerItem.ToString();
+            return result;
+        }
+
         public int Barcode
         {
             get

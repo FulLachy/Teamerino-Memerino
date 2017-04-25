@@ -18,11 +18,22 @@ namespace Teamerino_Memerino
         private BindingSource itemlistBinding = new BindingSource();
         private BindingSource recordlistBinding = new BindingSource();     
 
-        //Load item and record
         private Database()
         {
             itemlistBinding.DataSource = typeof(InventoryItem);
             recordlistBinding.DataSource = typeof(SalesRecord);
+
+            //instance = this;// Stupid I know, but LoadItems and LoadRecords rely on instance to be set before the constructor finishes
+            LoadItems();
+            LoadRecords();
+
+            Application.ApplicationExit += new EventHandler(this.OnApplicationExit);
+        }
+
+        private void OnApplicationExit(object sender, EventArgs e)
+        {
+            WriteItems();
+            WriteRecords();
         }
 
         public List<InventoryItem> ShowItem()
@@ -69,11 +80,6 @@ namespace Teamerino_Memerino
                 return result;
         }
 
-        public void EditItem()
-        {
-
-        }
-
         public void AddRecord(SalesRecord record)
         {
             recordlist.Add(record);
@@ -110,6 +116,7 @@ namespace Teamerino_Memerino
                 }
 
                 recordlist.Remove(found);
+                recordlistBinding.Remove(found);
             }
             AddRecord(record);
         }
@@ -121,93 +128,40 @@ namespace Teamerino_Memerino
             return theItem;
         }
 
-        public void LoadItems()
+        private void LoadItems()
         {
             List<string[]> rows = System.IO.File.ReadAllLines("...//...//Resources//Items//inventory.txt").Select(x => x.Split(',')).ToList();
+            if (rows.Count <= 1) return;
             rows.ForEach(x => {
-                InventoryItem loadItem = new InventoryItem();
-                int c = 0;
-                double y = 0;
-                Int32.TryParse(x[0], out c);
-                loadItem.Barcode = c;
-                loadItem.ItemName = x[1];
-                Int32.TryParse(x[2], out c);
-                loadItem.Stock = c;
-                Int32.TryParse(x[3], out c);
-                loadItem.LowStockLevel = c;
-                double.TryParse(x[4], out y);
-                loadItem.PricePerUnit = y;
-                Database.Instance.AddItem(loadItem);
+                InventoryItem loadItem = new InventoryItem(x);
+                AddItem(loadItem);
             });
         }
-        public void LoadRecords()
+
+        private void LoadRecords()
         {
             List<string[]> rows = System.IO.File.ReadAllLines("...//...//Resources//Records//sales.txt").Select(x => x.Split(',')).ToList();
+            if (rows.Count <= 1) return;
             rows.ForEach(x => {
-                int c = 0;
-                double y = 0;
-                List<int> v = new List<int> { };
-                Int32.TryParse(x[0], out c);
-                int RecordNum = c;
-                Double.TryParse(x[1], out y);
-                // loadRecord.Price = y;
-                // loadRecord.Time = x[2];
-                // loadRecord.Date = x[3];
-                //NeedQuantity
-                SalesRecord loadRecord = new SalesRecord(RecordNum);
-
-                for (int z = 4; z < x.Count<string>() - 2; z += 3)
-                {
-                    int Barcode;
-                    Int32.TryParse(x[z], out Barcode);
-                    int Quantity;
-                    Int32.TryParse(x[z + 1], out Quantity);
-                    int PricePerItem;
-                    Int32.TryParse(x[z + 2], out PricePerItem);
-                    var item = new SalesRecordItem(Barcode, Quantity, PricePerItem);
-                    loadRecord.AddItem(item);
-                }
+                SalesRecord loadRecord = new SalesRecord(x);
                 AddRecord(loadRecord);
             });
         }
-        public void WriteSales()
+
+        private void WriteRecords()
         {
-            string line = "";
-            string[] saveText = new string[recordlist.Count];
-            int c = 0;
-           // System.IO.File.WriteAllText("...//...//Resources//Records//sales.txt", "");
-            foreach (SalesRecord sale in recordlist)
-            {
-                int i = 0;
-                line += sale.RecordNum.ToString();
-                line += ",";
-                line += sale.Price.ToString();
-                line += ",";
-                line += sale.Time.ToString();
-                line += ",";
-                line += sale.Date.ToString();
-                line += ",";
-                while (i < sale.Items.Count)
-                {
-                    line += sale.Items[i].Barcode.ToString();
-                    line += ",";
-                    line += sale.Items[i].Quantity.ToString();
-                    line += ",";
-                    i++;
-                }
-                line.TrimEnd(',');
-                saveText[c] = line;
-                line = "";
-                c++;
-            }
+            List<string> saveText = new List<string>();
+            foreach (SalesRecord record in recordlist)
+                saveText.Add(record.ToCSV());
             System.IO.File.WriteAllLines("...//...//Resources//Records//sales.txt", saveText);
         }
-        public void WriteItems(string path, DataGridView dgv)
+
+        private void WriteItems()
         {
-            dgv.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
-            dgv.SelectAll();
-            DataObject toSave = dgv.GetClipboardContent();
-            System.IO.File.WriteAllText(path, toSave.GetText(TextDataFormat.CommaSeparatedValue));
+            List<string> saveText = new List<string>();
+            foreach(InventoryItem item in itemlist)
+                saveText.Add(item.ToCSV());
+            System.IO.File.WriteAllLines("...//...//Resources//Items//inventory.txt", saveText);
         }
     }
 }

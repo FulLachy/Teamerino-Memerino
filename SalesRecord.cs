@@ -1,14 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Teamerino_Memerino
 {
-    public class SalesRecord
+    public class SalesRecord : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
         static private int _nextRecordNumber;
 
         private int _recnum;
@@ -26,12 +34,33 @@ namespace Teamerino_Memerino
             {
                 _recnum = recordNumber;
                 if (recordNumber >= _nextRecordNumber)
-                {
                     _nextRecordNumber = recordNumber + 1;
-                }
             }
             _datetime = DateTime.UtcNow;
             _itemlistBinding.DataSource = typeof(SalesRecordItem);
+        }
+
+        public SalesRecord(string[] x)
+        {
+            Int32.TryParse(x[0], out _recnum);
+            if (_recnum >= _nextRecordNumber)
+                _nextRecordNumber = _recnum + 1;
+
+            Int64 datetimeticks;
+            Int64.TryParse(x[1], out datetimeticks);
+            _datetime = new DateTime(datetimeticks);
+
+            for (int z = 2; z < x.Count<string>() - 2; z += 3)
+            {
+                int Barcode;
+                Int32.TryParse(x[z], out Barcode);
+                int Quantity;
+                Int32.TryParse(x[z + 1], out Quantity);
+                double PricePerItem;
+                Double.TryParse(x[z + 2], out PricePerItem);
+                var item = new SalesRecordItem(Barcode, Quantity, PricePerItem);
+                AddItem(item);
+            }
         }
 
         public SalesRecord Copy()
@@ -45,15 +74,20 @@ namespace Teamerino_Memerino
             return result;
         }
 
+        public string ToCSV()
+        {
+            string result = _recnum.ToString() + ","
+                          + _datetime.Ticks.ToString();
+            foreach (SalesRecordItem salesItem in _items)
+                result += "," + salesItem.ToCSV();
+            return result;
+        }
+
         public int RecordNum
         {
             get
             {
                 return _recnum;
-            }
-            set
-            {
-                _recnum = value;
             }
         }
 
@@ -63,9 +97,7 @@ namespace Teamerino_Memerino
             {
                 double result = 0.0;
                 foreach (SalesRecordItem saleItem in _items)
-                {
                     result += saleItem.Price;
-                }
                 return result;
             }
         }
