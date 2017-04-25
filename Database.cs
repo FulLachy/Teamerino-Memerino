@@ -106,6 +106,12 @@ namespace Teamerino_Memerino
             recordlistBinding.Add(Record);
         }
 
+        public void AddRecord(SalesStruct record)
+        {
+            recordlist.Add(record);
+            recordlistBinding.Add(record);
+        }
+
         public void RemoveRecord()
         {
 
@@ -192,10 +198,8 @@ namespace Teamerino_Memerino
             List<string[]> rows = System.IO.File.ReadAllLines("...//...//Resources//Records//sales.txt").Select(x => x.Split(',')).ToList();
             rows.ForEach(x => {
                 SalesStruct loadRecord = new SalesStruct();
-                SalesStockStruct loadQuantity = new SalesStockStruct();
                 int c = 0;
                 double y = 0;
-                int z = 4;
                 List<int> v = new List<int> { };
                 Int32.TryParse(x[0], out c);
                 loadRecord.RecordNum = c;
@@ -204,15 +208,16 @@ namespace Teamerino_Memerino
                 loadRecord.Time = x[2];
                 loadRecord.Date = x[3];
                 //NeedQuantity
-                foreach (SalesStockStruct item in loadRecord.ItemQuantity)
+                for (int z = 4; z < x.Count<string>() - 1; z += 2)
                 {
+                    var item = new SalesStockStruct();
                     Int32.TryParse(x[z], out c);
                     item.Barcode = c;
                     Int32.TryParse(x[z + 1], out c);
                     item.Quantity = c;
+                    loadRecord.ItemQuantity.Add(item);
                 }
-                recordlist.Add(loadRecord);
-                recordlistBinding.Add(loadRecord);
+                AddRecord(loadRecord);
             });
         }
         public void WriteSales()
