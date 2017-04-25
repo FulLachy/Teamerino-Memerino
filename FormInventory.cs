@@ -34,13 +34,13 @@ namespace Teamerino_Memerino
 
         private void bt_Add_Inv_Click(object sender, EventArgs e)
         {
-            Database.Instance.AddItem(new InventoryStruct());
+            Database.Instance.AddItem(new InventoryItem());
         }
 
         private void remove_Click(object sender, EventArgs e)
         {
             if (DGV_Inv.CurrentRow == null) return;
-            var item = (InventoryStruct)DGV_Inv.CurrentRow.DataBoundItem;
+            var item = (InventoryItem)DGV_Inv.CurrentRow.DataBoundItem;
             var confirmation = MessageBox.Show("Are you sure you want to remove " + item.ItemName + " from database?", "Confirm Removal", MessageBoxButtons.YesNo);
             if (confirmation == DialogResult.Yes)
             {

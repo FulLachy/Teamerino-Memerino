@@ -12,7 +12,7 @@ namespace Teamerino_Memerino
 {
     public partial class FormAddSalesRecord : Form
     {
-        private SalesStruct _recordToEdit;
+        private SalesRecord _recordToEdit;
 
 
 
@@ -95,7 +95,7 @@ namespace Teamerino_Memerino
                 {
                     if (RecordToEdit == null)
                     {
-                        Database.Instance.AddRecord(new SalesStruct());
+                        Database.Instance.AddRecord(new SalesRecord());
                     }
                     else
                     {
@@ -139,10 +139,10 @@ namespace Teamerino_Memerino
 
             if (_recordToEdit != null)
             {
-                List<SalesStockStruct> itemStock = _recordToEdit.Item;
+                List<SalesRecordItem> itemStock = _recordToEdit.Items;
                 for (int i = 0; i < itemStock.Count; i++)
                 {
-                    InventoryStruct item = Database.Instance.ShowItem().Find(x => x.Barcode == itemStock[i].Barcode);
+                    InventoryItem item = Database.Instance.ShowItem().Find(x => x.Barcode == itemStock[i].Barcode);
                     DGV_AddEditSales.Rows.Add(item.Barcode, item.ItemName, itemStock[i].Quantity);
                 }
             }
@@ -150,7 +150,7 @@ namespace Teamerino_Memerino
 
         private void button_move_item_Click(object sender, EventArgs e)
         {
-            InventoryStruct theItem = (InventoryStruct)listBox_items.SelectedItem;
+            InventoryItem theItem = (InventoryItem)listBox_items.SelectedItem;
             bool found = false;
 
             //Attempts to find the item in the current stock table
@@ -188,12 +188,12 @@ namespace Teamerino_Memerino
         private void txt_Search_TextChanged(object sender, EventArgs e)
         {
             BindingSource tempSource = new BindingSource();
-            tempSource.DataSource = typeof(InventoryStruct);
+            tempSource.DataSource = typeof(InventoryItem);
 
             //Only items that have the same name in the text box will be shown
             if (txt_Search.Text != "Search Here...")
             {
-                foreach (InventoryStruct item in Database.Instance.ShowItem())
+                foreach (InventoryItem item in Database.Instance.ShowItem())
                 {
                     if (item.ItemName.Contains(txt_Search.Text))
                     {
@@ -205,7 +205,7 @@ namespace Teamerino_Memerino
             }
         }
 
-        public SalesStruct RecordToEdit
+        public SalesRecord RecordToEdit
         {
             get
             {
