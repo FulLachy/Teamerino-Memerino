@@ -65,11 +65,11 @@
     <Compile Include="FormInventory.Designer.cs">
       <DependentUpon>FormInventory.cs</DependentUpon>
     </Compile>
-    <Compile Include="InventoryStruct.cs" />
+    <Compile Include="InventoryItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SalesStockStruct.cs" />
-    <Compile Include="SalesStruct.cs" />
+    <Compile Include="SalesRecord.cs" />
+    <Compile Include="SalesRecordItem.cs" />
     <EmbeddedResource Include="FormAddEditRecords.resx">
       <DependentUpon>FormAddEditRecords.cs</DependentUpon>
     </EmbeddedResource>
