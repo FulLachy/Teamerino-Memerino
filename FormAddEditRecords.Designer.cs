@@ -64,9 +64,10 @@
             this.DGV_AddEditSales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGV_AddEditSales.Location = new System.Drawing.Point(266, 12);
             this.DGV_AddEditSales.Name = "DGV_AddEditSales";
-            this.DGV_AddEditSales.ReadOnly = true;
             this.DGV_AddEditSales.Size = new System.Drawing.Size(452, 213);
             this.DGV_AddEditSales.TabIndex = 2;
+            this.DGV_AddEditSales.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_AddEditSales_CellEndEdit);
+            this.DGV_AddEditSales.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.DGV_AddEditSales_CellValidating);
             // 
             // bt_Remove
             // 
