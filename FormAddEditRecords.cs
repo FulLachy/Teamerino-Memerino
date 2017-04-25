@@ -76,7 +76,7 @@ namespace Teamerino_Memerino
                     {
                         Database.Instance.EditRecord(DGV_AddEditSales, RecordToEdit);
                     }
-
+                    Database.Instance.WriteSales();
                     DGV_AddEditSales.Rows.Clear();
                     Close();
                 }

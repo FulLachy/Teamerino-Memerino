@@ -168,10 +168,91 @@ namespace Teamerino_Memerino
 
             return theItem;
         }
-
-        public void WriteToFile()
+        public void LoadItems()
         {
-
+            List<string[]> rows = System.IO.File.ReadAllLines("...//...//Resources//Items//inventory.txt").Select(x => x.Split(',')).ToList();
+            rows.ForEach(x => {
+                InventoryStruct loadItem = new InventoryStruct();
+                int c = 0;
+                double y = 0;
+                Int32.TryParse(x[0], out c);
+                loadItem.Barcode = c;
+                loadItem.ItemName = x[1];
+                Int32.TryParse(x[2], out c);
+                loadItem.Stock = c;
+                Int32.TryParse(x[3], out c);
+                loadItem.LowStockLevel = c;
+                double.TryParse(x[4], out y);
+                loadItem.Price = y;
+                Database.Instance.AddItem(loadItem);
+            });
+        }
+        public void LoadRecords()
+        {
+            List<string[]> rows = System.IO.File.ReadAllLines("...//...//Resources//Records//sales.txt").Select(x => x.Split(',')).ToList();
+            rows.ForEach(x => {
+                SalesStruct loadRecord = new SalesStruct();
+                SalesStockStruct loadQuantity = new SalesStockStruct();
+                int c = 0;
+                double y = 0;
+                int z = 4;
+                List<int> v = new List<int> { };
+                Int32.TryParse(x[0], out c);
+                loadRecord.RecordNum = c;
+                Double.TryParse(x[1], out y);
+                loadRecord.Price = y;
+                loadRecord.Time = x[2];
+                loadRecord.Date = x[3];
+                //NeedQuantity
+                foreach (SalesStockStruct item in loadRecord.ItemQuantity)
+                {
+                    Int32.TryParse(x[z], out c);
+                    item.Barcode = c;
+                    Int32.TryParse(x[z + 1], out c);
+                    item.Quantity = c;
+                }
+                recordlist.Add(loadRecord);
+                recordlistBinding.Add(loadRecord);
+            });
+        }
+        public void WriteSales()
+        {
+            string line = "";
+            string[] saveText = new string[recordlist.Count];
+            int c = 0;
+           // System.IO.File.WriteAllText("...//...//Resources//Records//sales.txt", "");
+            foreach (SalesStruct sale in recordlist)
+            {
+                int i = 0;
+                line += sale.RecordNum.ToString();
+                line += ",";
+                line += sale.Price.ToString();
+                line += ",";
+                line += sale.Time.ToString();
+                line += ",";
+                line += sale.Date.ToString();
+                line += ",";
+                while (i < sale.ItemQuantity.Count)
+                {
+                    line += sale.ItemQuantity[i].Barcode.ToString();
+                    line += ",";
+                    line += sale.ItemQuantity[i].Quantity.ToString();
+                    line += ",";
+                    i++;
+                }
+                line.TrimEnd(',');
+                saveText[c] = line;
+                line = "";
+                c++;
+            }
+            System.IO.File.WriteAllLines("...//...//Resources//Records//sales.txt", saveText);
+        }
+        public void WriteItems(string path, DataGridView dgv)
+        {
+            dgv.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
+            dgv.SelectAll();
+            DataObject toSave = dgv.GetClipboardContent();
+            System.IO.File.WriteAllText(path, toSave.GetText(TextDataFormat.CommaSeparatedValue));
         }
     }
 }
