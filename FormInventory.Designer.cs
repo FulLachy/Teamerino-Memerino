@@ -28,76 +28,65 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Barcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.InStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LowLevel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PricePerItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.DGV_Inv = new System.Windows.Forms.DataGridView();
+            this.bt_Add_Inv = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_Inv)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // DGV_Inv
             // 
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Barcode,
-            this.ItemName,
-            this.InStock,
-            this.LowLevel,
-            this.PricePerItem});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(544, 286);
-            this.dataGridView1.TabIndex = 0;
+            this.DGV_Inv.AllowUserToAddRows = false;
+            this.DGV_Inv.AllowUserToDeleteRows = false;
+            this.DGV_Inv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV_Inv.Location = new System.Drawing.Point(12, 13);
+            this.DGV_Inv.Name = "DGV_Inv";
+            this.DGV_Inv.Size = new System.Drawing.Size(545, 256);
+            this.DGV_Inv.TabIndex = 0;
+            this.DGV_Inv.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_Inv_CellEndEdit);
+            this.DGV_Inv.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgv_Cell_Validating);
             // 
-            // Barcode
+            // bt_Add_Inv
             // 
-            this.Barcode.HeaderText = "Barcode";
-            this.Barcode.Name = "Barcode";
+            this.bt_Add_Inv.Location = new System.Drawing.Point(563, 13);
+            this.bt_Add_Inv.Name = "bt_Add_Inv";
+            this.bt_Add_Inv.Size = new System.Drawing.Size(100, 25);
+            this.bt_Add_Inv.TabIndex = 1;
+            this.bt_Add_Inv.Text = "Add Inventory";
+            this.bt_Add_Inv.UseVisualStyleBackColor = true;
+            this.bt_Add_Inv.Click += new System.EventHandler(this.bt_Add_Inv_Click);
             // 
-            // ItemName
+            // button1
             // 
-            this.ItemName.HeaderText = "Item Name";
-            this.ItemName.Name = "ItemName";
-            // 
-            // InStock
-            // 
-            this.InStock.HeaderText = "InStock";
-            this.InStock.Name = "InStock";
-            // 
-            // LowLevel
-            // 
-            this.LowLevel.HeaderText = "Low Stock Level";
-            this.LowLevel.Name = "LowLevel";
-            // 
-            // PricePerItem
-            // 
-            this.PricePerItem.HeaderText = "Price Per Item";
-            this.PricePerItem.Name = "PricePerItem";
+            this.button1.Location = new System.Drawing.Point(563, 44);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(99, 25);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "delete";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.remove_Click);
             // 
             // FormInventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(566, 310);
-            this.Controls.Add(this.dataGridView1);
+            this.ClientSize = new System.Drawing.Size(670, 310);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.bt_Add_Inv);
+            this.Controls.Add(this.DGV_Inv);
             this.Name = "FormInventory";
             this.Text = "Inventory";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Inventory_FormClosing);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.FormInventory_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_Inv)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Barcode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItemName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn InStock;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LowLevel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PricePerItem;
+        private System.Windows.Forms.DataGridView DGV_Inv;
+        private System.Windows.Forms.Button bt_Add_Inv;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -19,11 +19,6 @@ namespace Teamerino_Memerino
             InitializeComponent();
         }
 
-        private void button_sales_records_Click(object sender, EventArgs e)
-        {
-            form_sales.ShowDialog();
-        }
-
         private void button_inventory_Click(object sender, EventArgs e)
         {
             form_inventory.ShowDialog();
@@ -33,5 +28,21 @@ namespace Teamerino_Memerino
         {
 
         }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button_add_record_Click(object sender, EventArgs e)
+        {
+            form_sales.ShowDialog();
+        }
+
+        private void button_edit_record_Click(object sender, EventArgs e)
+        {
+            form_sales.ShowDialog();
+        }
+
     }
 }
