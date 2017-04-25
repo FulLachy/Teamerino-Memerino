@@ -63,7 +63,7 @@ namespace Teamerino_Memerino
             }
         }
 
-        public double Price
+        public double PricePerUnit
         {
             get
             {

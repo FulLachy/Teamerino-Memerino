@@ -70,7 +70,7 @@ namespace Teamerino_Memerino
                     if(c0 < 0)
                         invalidate_cell(dgv, cell, e, header + " Must Be Positive");
                 }
-                else if (header.Equals("Price"))
+                else if (header.Equals("PricePerUnit"))
                 {
                     double c0 = 0;
                     if (e.FormattedValue == null || !double.TryParse(e.FormattedValue.ToString(), out c0))
@@ -86,6 +86,16 @@ namespace Teamerino_Memerino
         private void DGV_Inv_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             ((DataGridView)sender).Rows[e.RowIndex].ErrorText = String.Empty;
+        }
+
+        private void bt_close_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void DGV_Inv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

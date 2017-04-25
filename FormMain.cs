@@ -60,5 +60,15 @@ namespace Teamerino_Memerino
                 MessageBox.Show("Please select a sales record.");
             }
         }
+
+        private void bt_quit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void dgv_main_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

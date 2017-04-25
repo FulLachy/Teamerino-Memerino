@@ -82,7 +82,7 @@ namespace Teamerino_Memerino
             foreach (DataGridViewRow row in dgv.Rows)
             {
                 InventoryStruct theItem = FindItemByBarcorde(int.Parse(row.Cells[0].Value.ToString()));
-                Record.Price += theItem.Price * int.Parse(row.Cells[2].Value.ToString());
+                Record.Price += theItem.PricePerUnit * int.Parse(row.Cells[2].Value.ToString());
 
                 //Creates the item stock and adds it to the sales record
                 SalesStockStruct tempStock = new SalesStockStruct();
@@ -130,7 +130,7 @@ namespace Teamerino_Memerino
             foreach (DataGridViewRow row in dgv.Rows)
             {
                 InventoryStruct theItem = FindItemByBarcorde(int.Parse(row.Cells[0].Value.ToString()));
-                recordlist[index].Price += theItem.Price * int.Parse(row.Cells[2].Value.ToString());
+                recordlist[index].Price += theItem.PricePerUnit * int.Parse(row.Cells[2].Value.ToString());
 
                 SalesStockStruct tempStock = new SalesStockStruct();
                 tempStock.Barcode = (int)row.Cells[0].Value;
@@ -183,7 +183,7 @@ namespace Teamerino_Memerino
                 Int32.TryParse(x[3], out c);
                 loadItem.LowStockLevel = c;
                 double.TryParse(x[4], out y);
-                loadItem.Price = y;
+                loadItem.PricePerUnit = y;
                 Database.Instance.AddItem(loadItem);
             });
         }

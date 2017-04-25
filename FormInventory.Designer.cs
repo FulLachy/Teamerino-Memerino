@@ -31,6 +31,7 @@
             this.DGV_Inv = new System.Windows.Forms.DataGridView();
             this.bt_Add_Inv = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.bt_close = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Inv)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,6 +44,7 @@
             this.DGV_Inv.Name = "DGV_Inv";
             this.DGV_Inv.Size = new System.Drawing.Size(545, 256);
             this.DGV_Inv.TabIndex = 0;
+            this.DGV_Inv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_Inv_CellContentClick);
             this.DGV_Inv.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_Inv_CellEndEdit);
             this.DGV_Inv.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgv_Cell_Validating);
             // 
@@ -50,9 +52,9 @@
             // 
             this.bt_Add_Inv.Location = new System.Drawing.Point(563, 13);
             this.bt_Add_Inv.Name = "bt_Add_Inv";
-            this.bt_Add_Inv.Size = new System.Drawing.Size(100, 25);
+            this.bt_Add_Inv.Size = new System.Drawing.Size(118, 25);
             this.bt_Add_Inv.TabIndex = 1;
-            this.bt_Add_Inv.Text = "Add Inventory";
+            this.bt_Add_Inv.Text = "Add Blank Line";
             this.bt_Add_Inv.UseVisualStyleBackColor = true;
             this.bt_Add_Inv.Click += new System.EventHandler(this.bt_Add_Inv_Click);
             // 
@@ -60,22 +62,33 @@
             // 
             this.button1.Location = new System.Drawing.Point(563, 44);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(99, 25);
+            this.button1.Size = new System.Drawing.Size(118, 25);
             this.button1.TabIndex = 2;
-            this.button1.Text = "delete";
+            this.button1.Text = "Delete Selected Line";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.remove_Click);
+            // 
+            // bt_close
+            // 
+            this.bt_close.Location = new System.Drawing.Point(563, 246);
+            this.bt_close.Name = "bt_close";
+            this.bt_close.Size = new System.Drawing.Size(118, 23);
+            this.bt_close.TabIndex = 6;
+            this.bt_close.Text = "Close";
+            this.bt_close.UseVisualStyleBackColor = true;
+            this.bt_close.Click += new System.EventHandler(this.bt_close_Click);
             // 
             // FormInventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(670, 310);
+            this.ClientSize = new System.Drawing.Size(687, 276);
+            this.Controls.Add(this.bt_close);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.bt_Add_Inv);
             this.Controls.Add(this.DGV_Inv);
             this.Name = "FormInventory";
-            this.Text = "Inventory";
+            this.Text = "People Health Pharmacy (Inventory)";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Inventory_FormClosing);
             this.Load += new System.EventHandler(this.FormInventory_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Inv)).EndInit();
@@ -88,5 +101,6 @@
         private System.Windows.Forms.DataGridView DGV_Inv;
         private System.Windows.Forms.Button bt_Add_Inv;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button bt_close;
     }
 }
