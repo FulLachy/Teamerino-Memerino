@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Teamerino_Memerino
 {
-    public class SalesRecordItem
+    public class SalesStockStruct
     {
         private int _barcode = new int();
         private int _quantity = new int();

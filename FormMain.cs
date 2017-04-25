@@ -50,7 +50,7 @@ namespace Teamerino_Memerino
             if (dgv_main.SelectedCells.Count != 0)
             {
                 DataGridViewRow theRow = dgv_main.Rows[dgv_main.SelectedCells[0].RowIndex];
-                List<SalesRecord> theRecords = Database.Instance.ShowRecord();
+                List<SalesStruct> theRecords = Database.Instance.ShowRecord();
                 form_sales.RecordToEdit = theRecords.Find(x => x.RecordNum == (int)theRow.Cells[0].Value);
                 form_sales.ShowDialog();
             }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Teamerino_Memerino
 {
-    public class SalesRecord
+    public class SalesStruct
     {
             
         private int _recnum;
@@ -14,7 +14,7 @@ namespace Teamerino_Memerino
         private string _date;
         private string _time;
         //index int refers to barcode, value int refers to quantity
-        private List<SalesRecordItem> _items = new List<SalesRecordItem>();
+        private List<SalesStockStruct> _items = new List<SalesStockStruct>();
 
         public int RecordNum
         {
@@ -65,7 +65,7 @@ namespace Teamerino_Memerino
             }
         }
 
-        public List<SalesRecordItem> Items
+        public List<SalesStockStruct> Item
         {
             get
             {

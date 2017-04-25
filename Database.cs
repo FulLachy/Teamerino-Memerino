@@ -12,8 +12,8 @@ namespace Teamerino_Memerino
         static private Database instance = new Database();
         static public Database Instance { get { return instance; } }
 
-        private List<InventoryItem> itemlist = new List<InventoryItem>();
-        private List<SalesRecord> recordlist = new List<SalesRecord>();
+        private List<InventoryStruct> itemlist = new List<InventoryStruct>();
+        private List<SalesStruct> recordlist = new List<SalesStruct>();
 
         private BindingSource itemlistBinding = new BindingSource();
         private BindingSource recordlistBinding = new BindingSource();     
@@ -21,27 +21,27 @@ namespace Teamerino_Memerino
         //Load item and record
         private Database()
         {
-            itemlistBinding.DataSource = typeof(InventoryItem);
-            recordlistBinding.DataSource = typeof(SalesRecord);
+            itemlistBinding.DataSource = typeof(InventoryStruct);
+            recordlistBinding.DataSource = typeof(SalesStruct);
         }
 
-        public List<InventoryItem> ShowItem()
+        public List<InventoryStruct> ShowItem()
         {
             return itemlist;
         }
 
-        public List<SalesRecord> ShowRecord()
+        public List<SalesStruct> ShowRecord()
         {
             return recordlist;
         }
 
-        public void AddItem(InventoryItem item)
+        public void AddItem(InventoryStruct item)
         {
             itemlist.Add(item);
             itemlistBinding.Add(item);
         }
 
-        public void RemoveItem(InventoryItem item)
+        public void RemoveItem(InventoryStruct item)
         {
             itemlist.Remove(item);
             itemlistBinding.Remove(item);
@@ -106,7 +106,7 @@ namespace Teamerino_Memerino
             recordlistBinding.Add(Record);
         }*/
 
-        public void AddRecord(SalesRecord record)
+        public void AddRecord(SalesStruct record)
         {
             recordlist.Add(record);
             recordlistBinding.Add(record);
@@ -117,28 +117,31 @@ namespace Teamerino_Memerino
 
         }
 
-        public void EditRecord(DataGridView dgv, SalesRecord recordToEdit)
+        public void EditRecord(DataGridView dgv, SalesStruct recordToEdit)
         {
+            //Gets the record that needs to be edited
+            int index = recordlist.FindIndex(x => x == recordToEdit);
+
             //Increases the stock of each item that was in the sales record
-            foreach (SalesRecordItem stockToIncrease in recordToEdit.Items)
+            foreach (SalesStockStruct stockToIncrease in recordlist[index].Item)
             {
-                InventoryItem theItem = FindItemByBarcorde(stockToIncrease.Barcode);
+                InventoryStruct theItem = FindItemByBarcorde(stockToIncrease.Barcode);
                 theItem.Stock += stockToIncrease.Quantity;
             }
 
-            recordToEdit.Items = new List<SalesRecordItem>();
-            recordToEdit.Price = 0;
+            recordlist[index].Item = new List<SalesStockStruct>();
+            recordlist[index].Price = 0;
 
             //Adds in the new item stocks to the record
             foreach (DataGridViewRow row in dgv.Rows)
             {
-                InventoryItem theItem = FindItemByBarcorde(int.Parse(row.Cells[0].Value.ToString()));
-                recordToEdit.Price += theItem.PricePerUnit * int.Parse(row.Cells[2].Value.ToString());
+                InventoryStruct theItem = FindItemByBarcorde(int.Parse(row.Cells[0].Value.ToString()));
+                recordlist[index].Price += theItem.PricePerUnit * int.Parse(row.Cells[2].Value.ToString());
 
-                SalesRecordItem tempStock = new SalesRecordItem();
+                SalesStockStruct tempStock = new SalesStockStruct();
                 tempStock.Barcode = (int)row.Cells[0].Value;
                 tempStock.Quantity = int.Parse(row.Cells[2].Value.ToString());
-                recordToEdit.Items.Add(tempStock);
+                recordlist[index].Item.Add(tempStock);
 
                 //Sets the quantity of the item accordingly
                 theItem.Stock -= tempStock.Quantity;
@@ -151,14 +154,16 @@ namespace Teamerino_Memerino
                     MessageBox.Show("Warning: " + theItem.ItemName + " stock level is running low!");
                 }
             }
+
+            recordlistBinding[index] = recordlist[index];
         }
 
         //This method finds a item using a given barcode
-        private InventoryItem FindItemByBarcorde(int barcode)
+        private InventoryStruct FindItemByBarcorde(int barcode)
         {
-            InventoryItem theItem = new InventoryItem();
+            InventoryStruct theItem = new InventoryStruct();
 
-            foreach (InventoryItem i in itemlist)
+            foreach (InventoryStruct i in itemlist)
             {
                 if (i.Barcode == barcode)
                 {
@@ -173,7 +178,7 @@ namespace Teamerino_Memerino
         {
             List<string[]> rows = System.IO.File.ReadAllLines("...//...//Resources//Items//inventory.txt").Select(x => x.Split(',')).ToList();
             rows.ForEach(x => {
-                InventoryItem loadItem = new InventoryItem();
+                InventoryStruct loadItem = new InventoryStruct();
                 int c = 0;
                 double y = 0;
                 Int32.TryParse(x[0], out c);
@@ -192,7 +197,7 @@ namespace Teamerino_Memerino
         {
             List<string[]> rows = System.IO.File.ReadAllLines("...//...//Resources//Records//sales.txt").Select(x => x.Split(',')).ToList();
             rows.ForEach(x => {
-                SalesRecord loadRecord = new SalesRecord();
+                SalesStruct loadRecord = new SalesStruct();
                 int c = 0;
                 double y = 0;
                 List<int> v = new List<int> { };
@@ -205,12 +210,12 @@ namespace Teamerino_Memerino
                 //NeedQuantity
                 for (int z = 4; z < x.Count<string>() - 1; z += 2)
                 {
-                    var item = new SalesRecordItem();
+                    var item = new SalesStockStruct();
                     Int32.TryParse(x[z], out c);
                     item.Barcode = c;
                     Int32.TryParse(x[z + 1], out c);
                     item.Quantity = c;
-                    loadRecord.Items.Add(item);
+                    loadRecord.Item.Add(item);
                 }
                 AddRecord(loadRecord);
             });
@@ -221,7 +226,7 @@ namespace Teamerino_Memerino
             string[] saveText = new string[recordlist.Count];
             int c = 0;
            // System.IO.File.WriteAllText("...//...//Resources//Records//sales.txt", "");
-            foreach (SalesRecord sale in recordlist)
+            foreach (SalesStruct sale in recordlist)
             {
                 int i = 0;
                 line += sale.RecordNum.ToString();
@@ -232,11 +237,11 @@ namespace Teamerino_Memerino
                 line += ",";
                 line += sale.Date.ToString();
                 line += ",";
-                while (i < sale.Items.Count)
+                while (i < sale.Item.Count)
                 {
-                    line += sale.Items[i].Barcode.ToString();
+                    line += sale.Item[i].Barcode.ToString();
                     line += ",";
-                    line += sale.Items[i].Quantity.ToString();
+                    line += sale.Item[i].Quantity.ToString();
                     line += ",";
                     i++;
                 }
