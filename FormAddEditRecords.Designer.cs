@@ -116,7 +116,7 @@
             this.label_Total.TabIndex = 8;
             this.label_Total.Text = "Total: $";
             // 
-            // FormAddSalesRecord
+            // FormAddEditRecords
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -132,10 +132,9 @@
             this.Controls.Add(this.button_save);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FormAddSalesRecord";
+            this.Name = "FormAddEditRecords";
             this.ShowIcon = false;
             this.Text = "People Health Pharmacy (Add or Edit Sales Record)";
-            this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormAddEditRecord_FormClosing);
             this.Load += new System.EventHandler(this.FormEditRecord_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DGV_AddEditSales)).EndInit();

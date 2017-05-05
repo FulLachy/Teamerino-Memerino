@@ -89,7 +89,6 @@
             this.Controls.Add(this.DGV_Inv);
             this.Name = "FormInventory";
             this.Text = "People Health Pharmacy (Inventory)";
-            this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Inventory_FormClosing);
             this.Load += new System.EventHandler(this.FormInventory_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Inv)).EndInit();

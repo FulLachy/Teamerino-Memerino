@@ -15,10 +15,16 @@ namespace Teamerino_Memerino
         FormAddEditRecords form_sales = new FormAddEditRecords();
         FormInventory form_inventory = new FormInventory();
         FormReports form_reports = new FormReports();
+        FormPredictions form_predictions = new FormPredictions();
 
         public FormMain()
         {
             InitializeComponent();
+        }
+
+        private void button_prediction_Click(object sender, EventArgs e)
+        {
+            form_predictions.ShowDialog();
         }
 
         private void button_inventory_Click(object sender, EventArgs e)

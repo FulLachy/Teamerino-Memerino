@@ -36,6 +36,7 @@ namespace Teamerino_Memerino
             this.button_add_record = new System.Windows.Forms.Button();
             this.dgv_main = new System.Windows.Forms.DataGridView();
             this.bt_quit = new System.Windows.Forms.Button();
+            this.button_prediction = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_main)).BeginInit();
             this.SuspendLayout();
             // 
@@ -104,12 +105,23 @@ namespace Teamerino_Memerino
             this.bt_quit.UseVisualStyleBackColor = true;
             this.bt_quit.Click += new System.EventHandler(this.bt_quit_Click);
             // 
+            // button_prediction
+            // 
+            this.button_prediction.Location = new System.Drawing.Point(663, 157);
+            this.button_prediction.Name = "button_prediction";
+            this.button_prediction.Size = new System.Drawing.Size(92, 23);
+            this.button_prediction.TabIndex = 6;
+            this.button_prediction.Text = "Predictions";
+            this.button_prediction.UseVisualStyleBackColor = true;
+            this.button_prediction.Click += new System.EventHandler(this.button_prediction_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(776, 280);
+            this.Controls.Add(this.button_prediction);
             this.Controls.Add(this.bt_quit);
             this.Controls.Add(this.dgv_main);
             this.Controls.Add(this.button_add_record);
@@ -118,7 +130,6 @@ namespace Teamerino_Memerino
             this.Controls.Add(this.button_edit_record);
             this.Name = "FormMain";
             this.Text = "People Health Pharmacy (Main Menu)";
-            this.TopMost = true;
             this.Load += new System.EventHandler(this.FormMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_main)).EndInit();
             this.ResumeLayout(false);
@@ -132,6 +143,7 @@ namespace Teamerino_Memerino
         private System.Windows.Forms.Button button_inventory;
         private System.Windows.Forms.Button button_reports;
         private System.Windows.Forms.Button button_add_record;
+        private System.Windows.Forms.Button button_prediction;
         private System.Windows.Forms.DataGridView dgv_main;
         private System.Windows.Forms.Button bt_quit;
     }

@@ -33,8 +33,8 @@
             this.label_dateStarting = new System.Windows.Forms.Label();
             this.dgv_Report = new System.Windows.Forms.DataGridView();
             this.groupBox_StartingMode = new System.Windows.Forms.GroupBox();
-            this.radio_Monthly = new System.Windows.Forms.RadioButton();
             this.radio_Weekly = new System.Windows.Forms.RadioButton();
+            this.radio_Monthly = new System.Windows.Forms.RadioButton();
             this.button_Export = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Report)).BeginInit();
             this.groupBox_StartingMode.SuspendLayout();
@@ -93,16 +93,6 @@
             this.groupBox_StartingMode.TabStop = false;
             this.groupBox_StartingMode.Text = "mode";
             // 
-            // radio_Monthly
-            // 
-            this.radio_Monthly.AutoSize = true;
-            this.radio_Monthly.Location = new System.Drawing.Point(73, 19);
-            this.radio_Monthly.Name = "radio_Monthly";
-            this.radio_Monthly.Size = new System.Drawing.Size(62, 17);
-            this.radio_Monthly.TabIndex = 0;
-            this.radio_Monthly.Text = "Monthly";
-            this.radio_Monthly.UseVisualStyleBackColor = true;
-            // 
             // radio_Weekly
             // 
             this.radio_Weekly.AutoSize = true;
@@ -114,6 +104,16 @@
             this.radio_Weekly.TabStop = true;
             this.radio_Weekly.Text = "Weekly";
             this.radio_Weekly.UseVisualStyleBackColor = true;
+            // 
+            // radio_Monthly
+            // 
+            this.radio_Monthly.AutoSize = true;
+            this.radio_Monthly.Location = new System.Drawing.Point(73, 19);
+            this.radio_Monthly.Name = "radio_Monthly";
+            this.radio_Monthly.Size = new System.Drawing.Size(62, 17);
+            this.radio_Monthly.TabIndex = 0;
+            this.radio_Monthly.Text = "Monthly";
+            this.radio_Monthly.UseVisualStyleBackColor = true;
             // 
             // button_Export
             // 
@@ -140,7 +140,6 @@
             this.MinimizeBox = false;
             this.Name = "FormReports";
             this.Text = "Reports";
-            this.TopMost = true;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormReports_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Report)).EndInit();
