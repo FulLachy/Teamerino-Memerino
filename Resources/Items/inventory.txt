@@ -1,2 +1,9 @@
-11111111,Apple Pie,94,20,12.5
-22222222,Coke,828,100,4.8
+11111111,Codral,43,14,10.45,Medecine:Cold&Flu
+22222222,Demazin,43,38,36.22,Medecine:Cold&Flu
+33333333,Vicks,15,35,35.56,Medecine:Cold&Flu
+44444444,Otrivin,79,48,22.61,Medecine:Allergy
+55555555,Drixine,18,20,37.17,Medecine:Allergy
+66666666,Betadine,73,40,42.81,Medecine:Misc
+77777777,Hydrodol,12,52,23.44,Medecine:Misc
+88888888,Swisse,82,25,10.95,Vitamins
+99999999,Ferro,74,81,42.3,Vitamins
