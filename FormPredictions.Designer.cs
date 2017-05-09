@@ -41,29 +41,30 @@
             this.button_close = new System.Windows.Forms.Button();
             this.button_predict_items = new System.Windows.Forms.Button();
             this.button_predict_tags = new System.Windows.Forms.Button();
+            this.lbl_title = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_results)).BeginInit();
             this.SuspendLayout();
             // 
             // radioButton_weekly
             // 
             this.radioButton_weekly.AutoSize = true;
+            this.radioButton_weekly.Checked = true;
             this.radioButton_weekly.Location = new System.Drawing.Point(12, 39);
             this.radioButton_weekly.Name = "radioButton_weekly";
-            this.radioButton_weekly.Size = new System.Drawing.Size(61, 17);
+            this.radioButton_weekly.Size = new System.Drawing.Size(110, 17);
             this.radioButton_weekly.TabIndex = 0;
             this.radioButton_weekly.TabStop = true;
-            this.radioButton_weekly.Text = "Weekly";
+            this.radioButton_weekly.Text = "For the next week";
             this.radioButton_weekly.UseVisualStyleBackColor = true;
             // 
             // radioButton_monthly
             // 
             this.radioButton_monthly.AutoSize = true;
-            this.radioButton_monthly.Location = new System.Drawing.Point(158, 39);
+            this.radioButton_monthly.Location = new System.Drawing.Point(128, 39);
             this.radioButton_monthly.Name = "radioButton_monthly";
-            this.radioButton_monthly.Size = new System.Drawing.Size(62, 17);
+            this.radioButton_monthly.Size = new System.Drawing.Size(113, 17);
             this.radioButton_monthly.TabIndex = 1;
-            this.radioButton_monthly.TabStop = true;
-            this.radioButton_monthly.Text = "Monthly";
+            this.radioButton_monthly.Text = "For the next month";
             this.radioButton_monthly.UseVisualStyleBackColor = true;
             // 
             // listBox_items
@@ -154,6 +155,7 @@
             this.button_predict_items.TabIndex = 10;
             this.button_predict_items.Text = "Predict Items";
             this.button_predict_items.UseVisualStyleBackColor = true;
+            this.button_predict_items.Click += new System.EventHandler(this.button_predict_items_Click);
             // 
             // button_predict_tags
             // 
@@ -164,11 +166,22 @@
             this.button_predict_tags.Text = "Predict Tags";
             this.button_predict_tags.UseVisualStyleBackColor = true;
             // 
+            // lbl_title
+            // 
+            this.lbl_title.AutoSize = true;
+            this.lbl_title.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_title.Location = new System.Drawing.Point(13, 13);
+            this.lbl_title.Name = "lbl_title";
+            this.lbl_title.Size = new System.Drawing.Size(111, 20);
+            this.lbl_title.TabIndex = 12;
+            this.lbl_title.Text = "Predict sales...";
+            // 
             // FormPredictions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(778, 459);
+            this.Controls.Add(this.lbl_title);
             this.Controls.Add(this.button_predict_tags);
             this.Controls.Add(this.button_predict_items);
             this.Controls.Add(this.button_close);
@@ -204,5 +217,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn Profit;
+        private System.Windows.Forms.Label lbl_title;
     }
 }
