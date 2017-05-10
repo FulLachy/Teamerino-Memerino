@@ -21,6 +21,14 @@ namespace Teamerino_Memerino
         {
             BringToFront();
             Database.Instance.BindInventoryToListBox(listBox_items);
+            List<InventoryItem> itemList = Database.Instance.ShowItem();
+            for(int i = 0; i< itemList.Count; i++)
+            {
+                string temp = itemList[i].Tag;
+                if(listBox_tags.Items.Contains(temp) != true)
+                    listBox_tags.Items.Add(temp);
+            }
+
 
             txt_search_items.ForeColor = SystemColors.GrayText;
             txt_search_items.Text = "Search Items Here...";
@@ -160,5 +168,69 @@ namespace Teamerino_Memerino
 
             dgv_results.Rows.Add(theItem.ItemName, quantity, price);
         }
+
+        private Tuple<int, double> PredictTagSales(InventoryItem theItem, string theTag )
+        {
+            int quantity = 0;
+            double price = 0;
+            if(theItem.Tag == theTag)
+            {
+                DateTime lastMonth = DateTime.Today;
+                lastMonth = lastMonth.AddMonths(-1);
+                List<SalesRecord> theSales = Database.Instance.ShowRecord().FindAll(x => DateTime.Compare(DateTime.Parse(x.Date), lastMonth) > -1);
+
+                foreach (SalesRecord sales in theSales)
+                {
+                    SalesRecordItem itemRecord = sales.Items.Find(x => x.Barcode == theItem.Barcode);
+                    if (itemRecord != null)
+                    {
+                        quantity += itemRecord.Quantity;
+                    }
+                }
+
+                if (radioButton_weekly.Checked)
+                {
+                    quantity /= 4;
+                }
+
+                price = quantity * theItem.PricePerUnit;
+            }            
+
+            return Tuple.Create(quantity, price);
+            
+        }
+
+        private void button_predict_tags_Click(object sender, EventArgs e)
+        {
+            string theTag = (string)listBox_tags.SelectedItem;
+            int quantity = 0;
+            double price = 0;
+            InventoryItem invItem;
+            List<InventoryItem> itemList = new List<InventoryItem>();
+            itemList = Database.Instance.ShowItem();
+            //Clear the table and then predict
+            ClearResults();
+            for (int i = 0; i < itemList.Count; i++)
+            {
+                invItem = itemList[i];
+                Tuple<int, double> result = PredictTagSales(invItem, theTag);
+                quantity = quantity + result.Item1;
+                price = price + result.Item2;
+            }
+            dgv_results.Rows.Add(theTag, quantity, price);
+
+        }
+
+        private void listBox_tags_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox_items_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        
     }
 }
