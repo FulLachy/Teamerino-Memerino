@@ -40,6 +40,11 @@ namespace Teamerino_Memerino
             _itemlistBinding.DataSource = typeof(SalesRecordItem);
         }
 
+        internal bool isDateBetween(DateTime start, DateTime end)
+        {
+            return start <= _datetime && _datetime <= end;
+        }
+
         public SalesRecord(string[] x)
         {
             Int32.TryParse(x[0], out _recnum);

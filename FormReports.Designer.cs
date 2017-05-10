@@ -36,6 +36,8 @@
             this.radio_Weekly = new System.Windows.Forms.RadioButton();
             this.radio_Monthly = new System.Windows.Forms.RadioButton();
             this.button_Export = new System.Windows.Forms.Button();
+            this.button_Regenerate = new System.Windows.Forms.Button();
+            this.label_Dates = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Report)).BeginInit();
             this.groupBox_StartingMode.SuspendLayout();
             this.SuspendLayout();
@@ -43,7 +45,7 @@
             // button_back
             // 
             this.button_back.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_back.Location = new System.Drawing.Point(743, 148);
+            this.button_back.Location = new System.Drawing.Point(743, 165);
             this.button_back.Name = "button_back";
             this.button_back.Size = new System.Drawing.Size(75, 23);
             this.button_back.TabIndex = 0;
@@ -64,11 +66,11 @@
             // 
             this.label_dateStarting.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label_dateStarting.AutoSize = true;
-            this.label_dateStarting.Location = new System.Drawing.Point(579, 24);
+            this.label_dateStarting.Location = new System.Drawing.Point(584, 27);
             this.label_dateStarting.Name = "label_dateStarting";
-            this.label_dateStarting.Size = new System.Drawing.Size(78, 13);
+            this.label_dateStarting.Size = new System.Drawing.Size(72, 13);
             this.label_dateStarting.TabIndex = 2;
-            this.label_dateStarting.Text = "Week Starting:";
+            this.label_dateStarting.Text = "Date Starting:";
             // 
             // dgv_Report
             // 
@@ -76,9 +78,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgv_Report.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_Report.Location = new System.Drawing.Point(12, 12);
+            this.dgv_Report.Location = new System.Drawing.Point(12, 27);
             this.dgv_Report.Name = "dgv_Report";
-            this.dgv_Report.Size = new System.Drawing.Size(561, 568);
+            this.dgv_Report.Size = new System.Drawing.Size(561, 553);
             this.dgv_Report.TabIndex = 3;
             // 
             // groupBox_StartingMode
@@ -118,7 +120,7 @@
             // button_Export
             // 
             this.button_Export.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_Export.Location = new System.Drawing.Point(743, 119);
+            this.button_Export.Location = new System.Drawing.Point(743, 136);
             this.button_Export.Name = "button_Export";
             this.button_Export.Size = new System.Drawing.Size(75, 23);
             this.button_Export.TabIndex = 0;
@@ -126,11 +128,32 @@
             this.button_Export.UseVisualStyleBackColor = true;
             this.button_Export.Click += new System.EventHandler(this.button_Export_Click);
             // 
+            // button_Regenerate
+            // 
+            this.button_Regenerate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_Regenerate.Location = new System.Drawing.Point(743, 107);
+            this.button_Regenerate.Name = "button_Regenerate";
+            this.button_Regenerate.Size = new System.Drawing.Size(75, 23);
+            this.button_Regenerate.TabIndex = 5;
+            this.button_Regenerate.Text = "Regenerate";
+            this.button_Regenerate.UseVisualStyleBackColor = true;
+            this.button_Regenerate.Click += new System.EventHandler(this.button_Regenerate_Click);
+            // 
+            // label_Dates
+            // 
+            this.label_Dates.AutoSize = true;
+            this.label_Dates.Location = new System.Drawing.Point(12, 9);
+            this.label_Dates.Name = "label_Dates";
+            this.label_Dates.Size = new System.Drawing.Size(0, 13);
+            this.label_Dates.TabIndex = 6;
+            // 
             // FormReports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(830, 592);
+            this.Controls.Add(this.label_Dates);
+            this.Controls.Add(this.button_Regenerate);
             this.Controls.Add(this.groupBox_StartingMode);
             this.Controls.Add(this.dgv_Report);
             this.Controls.Add(this.label_dateStarting);
@@ -141,6 +164,7 @@
             this.Name = "FormReports";
             this.Text = "Reports";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormReports_FormClosing);
             this.Load += new System.EventHandler(this.FormReports_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Report)).EndInit();
             this.groupBox_StartingMode.ResumeLayout(false);
@@ -160,5 +184,7 @@
         private System.Windows.Forms.RadioButton radio_Weekly;
         private System.Windows.Forms.RadioButton radio_Monthly;
         private System.Windows.Forms.Button button_Export;
+        private System.Windows.Forms.Button button_Regenerate;
+        private System.Windows.Forms.Label label_Dates;
     }
 }
