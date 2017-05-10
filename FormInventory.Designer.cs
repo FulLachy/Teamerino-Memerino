@@ -40,7 +40,7 @@
             this.DGV_Inv.AllowUserToAddRows = false;
             this.DGV_Inv.AllowUserToDeleteRows = false;
             this.DGV_Inv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGV_Inv.Location = new System.Drawing.Point(12, 13);
+            this.DGV_Inv.Location = new System.Drawing.Point(12, 84);
             this.DGV_Inv.Name = "DGV_Inv";
             this.DGV_Inv.Size = new System.Drawing.Size(545, 256);
             this.DGV_Inv.TabIndex = 0;
@@ -50,9 +50,9 @@
             // 
             // bt_Add_Inv
             // 
-            this.bt_Add_Inv.Location = new System.Drawing.Point(563, 13);
+            this.bt_Add_Inv.Location = new System.Drawing.Point(563, 84);
             this.bt_Add_Inv.Name = "bt_Add_Inv";
-            this.bt_Add_Inv.Size = new System.Drawing.Size(118, 25);
+            this.bt_Add_Inv.Size = new System.Drawing.Size(119, 48);
             this.bt_Add_Inv.TabIndex = 1;
             this.bt_Add_Inv.Text = "Add Blank Line";
             this.bt_Add_Inv.UseVisualStyleBackColor = true;
@@ -60,9 +60,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(563, 44);
+            this.button1.Location = new System.Drawing.Point(563, 138);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(118, 25);
+            this.button1.Size = new System.Drawing.Size(119, 48);
             this.button1.TabIndex = 2;
             this.button1.Text = "Delete Selected Line";
             this.button1.UseVisualStyleBackColor = true;
@@ -70,9 +70,9 @@
             // 
             // bt_close
             // 
-            this.bt_close.Location = new System.Drawing.Point(563, 246);
+            this.bt_close.Location = new System.Drawing.Point(563, 292);
             this.bt_close.Name = "bt_close";
-            this.bt_close.Size = new System.Drawing.Size(118, 23);
+            this.bt_close.Size = new System.Drawing.Size(119, 48);
             this.bt_close.TabIndex = 6;
             this.bt_close.Text = "Close";
             this.bt_close.UseVisualStyleBackColor = true;
@@ -82,7 +82,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(687, 276);
+            this.ClientSize = new System.Drawing.Size(694, 349);
             this.Controls.Add(this.bt_close);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.bt_Add_Inv);

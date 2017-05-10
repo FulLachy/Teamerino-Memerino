@@ -49,7 +49,7 @@
             // 
             this.radioButton_weekly.AutoSize = true;
             this.radioButton_weekly.Checked = true;
-            this.radioButton_weekly.Location = new System.Drawing.Point(12, 39);
+            this.radioButton_weekly.Location = new System.Drawing.Point(11, 39);
             this.radioButton_weekly.Name = "radioButton_weekly";
             this.radioButton_weekly.Size = new System.Drawing.Size(110, 17);
             this.radioButton_weekly.TabIndex = 0;
@@ -60,7 +60,7 @@
             // radioButton_monthly
             // 
             this.radioButton_monthly.AutoSize = true;
-            this.radioButton_monthly.Location = new System.Drawing.Point(128, 39);
+            this.radioButton_monthly.Location = new System.Drawing.Point(127, 39);
             this.radioButton_monthly.Name = "radioButton_monthly";
             this.radioButton_monthly.Size = new System.Drawing.Size(113, 17);
             this.radioButton_monthly.TabIndex = 1;
@@ -101,7 +101,7 @@
             this.txt_search_tags.Size = new System.Drawing.Size(208, 20);
             this.txt_search_tags.TabIndex = 7;
             this.txt_search_tags.Text = "Search Tags Here... U+1F50D";
-            this.txt_search_tags.TextChanged += new System.EventHandler(this.txt_Search_items_TextChanged);
+            this.txt_search_tags.TextChanged += new System.EventHandler(this.txt_Search_tags_TextChanged);
             this.txt_search_tags.Enter += new System.EventHandler(this.txt_Search_tags_Enter);
             this.txt_search_tags.Leave += new System.EventHandler(this.txt_Search_tags_Leave);
             // 
@@ -139,9 +139,9 @@
             // 
             // button_close
             // 
-            this.button_close.Location = new System.Drawing.Point(628, 412);
+            this.button_close.Location = new System.Drawing.Point(628, 391);
             this.button_close.Name = "button_close";
-            this.button_close.Size = new System.Drawing.Size(138, 23);
+            this.button_close.Size = new System.Drawing.Size(138, 45);
             this.button_close.TabIndex = 9;
             this.button_close.Text = "Close";
             this.button_close.UseVisualStyleBackColor = true;
@@ -151,7 +151,7 @@
             // 
             this.button_predict_items.Location = new System.Drawing.Point(628, 74);
             this.button_predict_items.Name = "button_predict_items";
-            this.button_predict_items.Size = new System.Drawing.Size(138, 23);
+            this.button_predict_items.Size = new System.Drawing.Size(138, 45);
             this.button_predict_items.TabIndex = 10;
             this.button_predict_items.Text = "Predict Items";
             this.button_predict_items.UseVisualStyleBackColor = true;
@@ -159,18 +159,19 @@
             // 
             // button_predict_tags
             // 
-            this.button_predict_tags.Location = new System.Drawing.Point(628, 112);
+            this.button_predict_tags.Location = new System.Drawing.Point(628, 125);
             this.button_predict_tags.Name = "button_predict_tags";
-            this.button_predict_tags.Size = new System.Drawing.Size(138, 23);
+            this.button_predict_tags.Size = new System.Drawing.Size(138, 45);
             this.button_predict_tags.TabIndex = 11;
             this.button_predict_tags.Text = "Predict Tags";
             this.button_predict_tags.UseVisualStyleBackColor = true;
+            this.button_predict_tags.Click += new System.EventHandler(this.button_predict_tags_Click);
             // 
             // lbl_title
             // 
             this.lbl_title.AutoSize = true;
             this.lbl_title.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_title.Location = new System.Drawing.Point(13, 13);
+            this.lbl_title.Location = new System.Drawing.Point(6, 16);
             this.lbl_title.Name = "lbl_title";
             this.lbl_title.Size = new System.Drawing.Size(111, 20);
             this.lbl_title.TabIndex = 12;

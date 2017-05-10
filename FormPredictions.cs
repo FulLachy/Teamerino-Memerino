@@ -15,6 +15,7 @@ namespace Teamerino_Memerino
         public FormPredictions()
         {
             InitializeComponent();
+
         }
 
         private void FormPredictions_Load(object sender, EventArgs e)
@@ -22,7 +23,9 @@ namespace Teamerino_Memerino
             BringToFront();
             Database.Instance.BindInventoryToListBox(listBox_items);
             List<InventoryItem> itemList = Database.Instance.ShowItem();
-            for(int i = 0; i< itemList.Count; i++)
+
+            txt_search_tags.Text = "";
+            for (int i = 0; i< itemList.Count; i++)
             {
                 string temp = itemList[i].Tag;
                 if(listBox_tags.Items.Contains(temp) != true)
@@ -82,6 +85,35 @@ namespace Teamerino_Memerino
                 listBox_items.DataSource = tempSource;
             }
         }
+
+        private void txt_Search_tags_TextChanged(object sender, EventArgs e)
+        {
+            BindingSource tempSource = new BindingSource();
+            tempSource.DataSource = typeof(String);
+            List<InventoryItem> itemList = Database.Instance.ShowItem();            
+            
+            //Only items that have the same name in the text box will be shown
+            if (txt_search_tags.Text != "Search Tags Here...")
+            {
+                foreach (InventoryItem item in Database.Instance.ShowItem())
+                {
+                    if (item.Tag.Contains(txt_search_tags.Text))
+                    {
+                        {
+                            if (tempSource.Contains(item.Tag) != true)
+                            {
+                                tempSource.Add(item.Tag);
+                            }
+                            
+                        }
+                        
+                    }
+                }
+
+                listBox_tags.DataSource = tempSource;
+            }
+        }
+
 
         private void txt_Search_tags_Leave(object sender, EventArgs e)
         {
@@ -230,7 +262,5 @@ namespace Teamerino_Memerino
         {
 
         }
-
-        
     }
 }
