@@ -66,7 +66,7 @@ namespace Teamerino_Memerino
                     var c0 = 0;
                     if (e.FormattedValue == null || !int.TryParse(e.FormattedValue.ToString(), out c0))
                         invalidate_cell(dgv, cell, e, header + " Must Be an Integer");
-                    if(c0 < 0)
+                    if (c0 < 0)
                         invalidate_cell(dgv, cell, e, header + " Must Be Positive");
                 }
                 else if (header.Equals("PricePerUnit"))
