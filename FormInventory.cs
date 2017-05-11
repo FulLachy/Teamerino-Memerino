@@ -33,9 +33,29 @@ namespace Teamerino_Memerino
             DGV_Inv.AutoResizeColumns();
         }
 
+
+        private void DGV_Inv_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+            int currentCol = DGV_Inv.CurrentCell.ColumnIndex;
+            int currentRow = DGV_Inv.CurrentCell.RowIndex;
+
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (currentCol != DGV_Inv.ColumnCount - 1)
+                {
+                    DGV_Inv.CurrentCell = DGV_Inv[currentCol + 1, currentRow];
+                    DGV_Inv.BeginEdit(true);
+                }
+                
+            }
+        }
+
         private void bt_Add_Inv_Click(object sender, EventArgs e)
         {
             Database.Instance.AddItem(new InventoryItem());
+            DGV_Inv.CurrentCell = DGV_Inv.Rows[DGV_Inv.Rows.GetLastRow(DataGridViewElementStates.None)].Cells[0];
+            DGV_Inv.BeginEdit(true);
         }
 
         private void remove_Click(object sender, EventArgs e)

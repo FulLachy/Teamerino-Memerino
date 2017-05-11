@@ -45,7 +45,7 @@
             // 
             this.button_save.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button_save.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_save.Location = new System.Drawing.Point(1036, 171);
+            this.button_save.Location = new System.Drawing.Point(1058, 171);
             this.button_save.Name = "button_save";
             this.button_save.Size = new System.Drawing.Size(190, 52);
             this.button_save.TabIndex = 0;
@@ -57,7 +57,7 @@
             // 
             this.button_cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button_cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.button_cancel.Location = new System.Drawing.Point(1036, 575);
+            this.button_cancel.Location = new System.Drawing.Point(1058, 583);
             this.button_cancel.Name = "button_cancel";
             this.button_cancel.Size = new System.Drawing.Size(190, 52);
             this.button_cancel.TabIndex = 1;
@@ -73,9 +73,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DGV_AddEditSales.BackgroundColor = System.Drawing.Color.Bisque;
             this.DGV_AddEditSales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGV_AddEditSales.Location = new System.Drawing.Point(286, 111);
+            this.DGV_AddEditSales.Location = new System.Drawing.Point(290, 111);
             this.DGV_AddEditSales.Name = "DGV_AddEditSales";
-            this.DGV_AddEditSales.Size = new System.Drawing.Size(744, 516);
+            this.DGV_AddEditSales.Size = new System.Drawing.Size(762, 524);
             this.DGV_AddEditSales.TabIndex = 2;
             this.DGV_AddEditSales.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_AddEditSales_CellEndEdit);
             this.DGV_AddEditSales.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.DGV_AddEditSales_CellValidating);
@@ -84,7 +84,7 @@
             // 
             this.bt_Remove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.bt_Remove.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bt_Remove.Location = new System.Drawing.Point(1036, 111);
+            this.bt_Remove.Location = new System.Drawing.Point(1058, 111);
             this.bt_Remove.Name = "bt_Remove";
             this.bt_Remove.Size = new System.Drawing.Size(190, 53);
             this.bt_Remove.TabIndex = 3;
@@ -95,7 +95,7 @@
             // txt_Search
             // 
             this.txt_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.txt_Search.Location = new System.Drawing.Point(12, 111);
+            this.txt_Search.Location = new System.Drawing.Point(14, 111);
             this.txt_Search.Name = "txt_Search";
             this.txt_Search.Size = new System.Drawing.Size(208, 29);
             this.txt_Search.TabIndex = 4;
@@ -105,7 +105,7 @@
             // button_move_item
             // 
             this.button_move_item.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.button_move_item.Location = new System.Drawing.Point(226, 130);
+            this.button_move_item.Location = new System.Drawing.Point(229, 151);
             this.button_move_item.Name = "button_move_item";
             this.button_move_item.Size = new System.Drawing.Size(54, 53);
             this.button_move_item.TabIndex = 6;
@@ -118,17 +118,18 @@
             this.listBox_items.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.listBox_items.FormattingEnabled = true;
             this.listBox_items.ItemHeight = 20;
-            this.listBox_items.Location = new System.Drawing.Point(12, 143);
+            this.listBox_items.Location = new System.Drawing.Point(14, 151);
             this.listBox_items.Name = "listBox_items";
             this.listBox_items.Size = new System.Drawing.Size(208, 484);
             this.listBox_items.TabIndex = 7;
+            this.listBox_items.SelectedIndexChanged += new System.EventHandler(this.listBox_items_SelectedIndexChanged);
             // 
             // label_Total
             // 
             this.label_Total.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label_Total.AutoSize = true;
             this.label_Total.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Total.Location = new System.Drawing.Point(1113, 544);
+            this.label_Total.Location = new System.Drawing.Point(1135, 552);
             this.label_Total.Name = "label_Total";
             this.label_Total.Size = new System.Drawing.Size(93, 29);
             this.label_Total.TabIndex = 8;
@@ -139,7 +140,7 @@
             this.lbl_Title.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_Title.AutoSize = true;
             this.lbl_Title.Font = new System.Drawing.Font("Pristina", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Title.Location = new System.Drawing.Point(348, 13);
+            this.lbl_Title.Location = new System.Drawing.Point(356, 13);
             this.lbl_Title.Name = "lbl_Title";
             this.lbl_Title.Size = new System.Drawing.Size(561, 85);
             this.lbl_Title.TabIndex = 9;
@@ -150,7 +151,7 @@
             this.label_total_text.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label_total_text.AutoSize = true;
             this.label_total_text.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.label_total_text.Location = new System.Drawing.Point(1036, 546);
+            this.label_total_text.Location = new System.Drawing.Point(1058, 554);
             this.label_total_text.Name = "label_total_text";
             this.label_total_text.Size = new System.Drawing.Size(83, 26);
             this.label_total_text.TabIndex = 10;
@@ -161,7 +162,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
-            this.ClientSize = new System.Drawing.Size(1238, 639);
+            this.ClientSize = new System.Drawing.Size(1255, 639);
             this.ControlBox = false;
             this.Controls.Add(this.label_total_text);
             this.Controls.Add(this.lbl_Title);

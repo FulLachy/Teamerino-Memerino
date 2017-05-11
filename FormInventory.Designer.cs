@@ -52,6 +52,7 @@
             this.DGV_Inv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_Inv_CellContentClick);
             this.DGV_Inv.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_Inv_CellEndEdit);
             this.DGV_Inv.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgv_Cell_Validating);
+            this.DGV_Inv.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DGV_Inv_KeyDown);
             // 
             // bt_Add_Inv
             // 

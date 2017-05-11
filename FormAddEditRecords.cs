@@ -180,5 +180,10 @@ namespace Teamerino_Memerino
         {
             ((DataGridView)sender).Rows[e.RowIndex].ErrorText = String.Empty;
         }
+
+        private void listBox_items_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

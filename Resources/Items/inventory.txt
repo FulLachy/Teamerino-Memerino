@@ -7,3 +7,4 @@
 77777777,Hydrodol,12,52,23.44,Medecine:Misc
 88888888,Swisse,82,25,10.95,Vitamins
 99999999,Ferro,74,81,42.3,Vitamins
+122,,0,0,0,
