@@ -29,6 +29,8 @@ namespace Teamerino_Memerino
         private void FormInventory_Load(object sender, EventArgs e)
         {
             Database.Instance.BindInventoryToDVG(DGV_Inv);
+            DGV_Inv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            DGV_Inv.AutoResizeColumns();
         }
 
         private void bt_Add_Inv_Click(object sender, EventArgs e)

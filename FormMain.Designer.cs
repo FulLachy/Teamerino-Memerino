@@ -37,14 +37,17 @@ namespace Teamerino_Memerino
             this.dgv_main = new System.Windows.Forms.DataGridView();
             this.bt_quit = new System.Windows.Forms.Button();
             this.button_prediction = new System.Windows.Forms.Button();
+            this.lbl_Title = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_main)).BeginInit();
             this.SuspendLayout();
             // 
             // button_edit_record
             // 
-            this.button_edit_record.Location = new System.Drawing.Point(671, 132);
+            this.button_edit_record.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_edit_record.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.button_edit_record.Location = new System.Drawing.Point(899, 163);
             this.button_edit_record.Name = "button_edit_record";
-            this.button_edit_record.Size = new System.Drawing.Size(151, 49);
+            this.button_edit_record.Size = new System.Drawing.Size(190, 49);
             this.button_edit_record.TabIndex = 0;
             this.button_edit_record.Text = "Edit";
             this.button_edit_record.UseVisualStyleBackColor = true;
@@ -52,9 +55,11 @@ namespace Teamerino_Memerino
             // 
             // button_inventory
             // 
-            this.button_inventory.Location = new System.Drawing.Point(671, 238);
+            this.button_inventory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_inventory.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.button_inventory.Location = new System.Drawing.Point(899, 269);
             this.button_inventory.Name = "button_inventory";
-            this.button_inventory.Size = new System.Drawing.Size(151, 49);
+            this.button_inventory.Size = new System.Drawing.Size(190, 49);
             this.button_inventory.TabIndex = 1;
             this.button_inventory.Text = "Inventory";
             this.button_inventory.UseVisualStyleBackColor = true;
@@ -62,9 +67,11 @@ namespace Teamerino_Memerino
             // 
             // button_reports
             // 
-            this.button_reports.Location = new System.Drawing.Point(671, 293);
+            this.button_reports.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_reports.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.button_reports.Location = new System.Drawing.Point(899, 324);
             this.button_reports.Name = "button_reports";
-            this.button_reports.Size = new System.Drawing.Size(151, 49);
+            this.button_reports.Size = new System.Drawing.Size(190, 49);
             this.button_reports.TabIndex = 2;
             this.button_reports.Text = "Reports";
             this.button_reports.UseVisualStyleBackColor = true;
@@ -72,10 +79,12 @@ namespace Teamerino_Memerino
             // 
             // button_add_record
             // 
-            this.button_add_record.Location = new System.Drawing.Point(671, 78);
+            this.button_add_record.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_add_record.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.button_add_record.Location = new System.Drawing.Point(899, 109);
             this.button_add_record.Margin = new System.Windows.Forms.Padding(2);
             this.button_add_record.Name = "button_add_record";
-            this.button_add_record.Size = new System.Drawing.Size(151, 49);
+            this.button_add_record.Size = new System.Drawing.Size(190, 49);
             this.button_add_record.TabIndex = 3;
             this.button_add_record.Text = "Add";
             this.button_add_record.UseVisualStyleBackColor = true;
@@ -85,21 +94,27 @@ namespace Teamerino_Memerino
             // 
             this.dgv_main.AllowUserToAddRows = false;
             this.dgv_main.AllowUserToDeleteRows = false;
+            this.dgv_main.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgv_main.BackgroundColor = System.Drawing.Color.Bisque;
             this.dgv_main.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_main.Location = new System.Drawing.Point(4, 78);
+            this.dgv_main.Location = new System.Drawing.Point(11, 110);
             this.dgv_main.Margin = new System.Windows.Forms.Padding(2);
             this.dgv_main.Name = "dgv_main";
             this.dgv_main.ReadOnly = true;
             this.dgv_main.RowTemplate.Height = 24;
-            this.dgv_main.Size = new System.Drawing.Size(655, 511);
+            this.dgv_main.Size = new System.Drawing.Size(883, 517);
             this.dgv_main.TabIndex = 4;
             this.dgv_main.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_main_CellContentClick);
             // 
             // bt_quit
             // 
-            this.bt_quit.Location = new System.Drawing.Point(671, 539);
+            this.bt_quit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.bt_quit.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.bt_quit.Location = new System.Drawing.Point(899, 578);
             this.bt_quit.Name = "bt_quit";
-            this.bt_quit.Size = new System.Drawing.Size(151, 49);
+            this.bt_quit.Size = new System.Drawing.Size(190, 49);
             this.bt_quit.TabIndex = 5;
             this.bt_quit.Text = "Quit";
             this.bt_quit.UseVisualStyleBackColor = true;
@@ -107,20 +122,35 @@ namespace Teamerino_Memerino
             // 
             // button_prediction
             // 
-            this.button_prediction.Location = new System.Drawing.Point(671, 395);
+            this.button_prediction.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_prediction.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.button_prediction.Location = new System.Drawing.Point(899, 443);
             this.button_prediction.Name = "button_prediction";
-            this.button_prediction.Size = new System.Drawing.Size(151, 49);
+            this.button_prediction.Size = new System.Drawing.Size(190, 49);
             this.button_prediction.TabIndex = 6;
             this.button_prediction.Text = "Predictions";
             this.button_prediction.UseVisualStyleBackColor = true;
             this.button_prediction.Click += new System.EventHandler(this.button_prediction_Click);
+            // 
+            // lbl_Title
+            // 
+            this.lbl_Title.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lbl_Title.AutoSize = true;
+            this.lbl_Title.Font = new System.Drawing.Font("Pristina", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Title.Location = new System.Drawing.Point(270, 9);
+            this.lbl_Title.Name = "lbl_Title";
+            this.lbl_Title.Size = new System.Drawing.Size(561, 85);
+            this.lbl_Title.TabIndex = 7;
+            this.lbl_Title.Text = "People Health Pharmacy";
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(885, 598);
+            this.BackColor = System.Drawing.Color.AliceBlue;
+            this.ClientSize = new System.Drawing.Size(1098, 635);
+            this.Controls.Add(this.lbl_Title);
             this.Controls.Add(this.button_prediction);
             this.Controls.Add(this.bt_quit);
             this.Controls.Add(this.dgv_main);
@@ -130,9 +160,11 @@ namespace Teamerino_Memerino
             this.Controls.Add(this.button_edit_record);
             this.Name = "FormMain";
             this.Text = "People Health Pharmacy (Main Menu)";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_main)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -146,6 +178,7 @@ namespace Teamerino_Memerino
         private System.Windows.Forms.Button button_prediction;
         private System.Windows.Forms.DataGridView dgv_main;
         private System.Windows.Forms.Button bt_quit;
+        private System.Windows.Forms.Label lbl_Title;
     }
 }
 

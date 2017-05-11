@@ -74,6 +74,8 @@ namespace Teamerino_Memerino
         private void FormEditRecord_Load(object sender, EventArgs e)
         {
             Database.Instance.BindInventoryToListBox(listBox_items);
+            DGV_AddEditSales.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            DGV_AddEditSales.AutoResizeColumns();
         }
 
         private void button_move_item_Click(object sender, EventArgs e)
@@ -137,6 +139,7 @@ namespace Teamerino_Memerino
                 _recordToEdit = value;
                 _recordToEdit.bindItemsToDGV(DGV_AddEditSales);
                 label_Total.DataBindings.Clear();
+                
                 label_Total.DataBindings.Add("Text", _recordToEdit, "Price");
             }
         }

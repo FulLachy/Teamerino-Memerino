@@ -106,7 +106,8 @@ namespace Teamerino_Memerino
 
         private void FormReports_Load(object sender, EventArgs e)
         {
-
+            dgv_Report.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgv_Report.AutoResizeColumns();
         }
 
         private void button_back_Click(object sender, EventArgs e)

@@ -262,5 +262,10 @@ namespace Teamerino_Memerino
         {
 
         }
+
+        private void radioButton_monthly_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
