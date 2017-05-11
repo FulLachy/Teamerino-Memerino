@@ -94,7 +94,10 @@ namespace Teamerino_Memerino
                 _recordToEdit.AddItem(new SalesRecordItem(invItem.Barcode, 1, invItem.PricePerUnit));
             }
             _recordToEdit.NotifyPropertyChanged("Price");
+            
         }
+
+       
 
         private void comboBox_item_list_SelectedIndexChanged(object sender, EventArgs e)
         {

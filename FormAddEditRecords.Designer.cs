@@ -112,6 +112,7 @@
             this.button_move_item.Text = "->";
             this.button_move_item.UseVisualStyleBackColor = true;
             this.button_move_item.Click += new System.EventHandler(this.button_move_item_Click);
+            
             // 
             // listBox_items
             // 
